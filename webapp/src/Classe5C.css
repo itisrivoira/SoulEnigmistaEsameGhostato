@@ -1,0 +1,57 @@
+
+.casella[id=porta]{
+    width: 32px;
+    height: 32px;
+    margin-top: 96px;
+}
+
+.casella[id=lavagna]{
+    width: 64px;
+    height: 32px;
+    margin-top: 64px;
+    margin-left: 256px;
+}
+
+.casella[id=computer]{
+    width: 32px;
+    height: 64px;
+    margin-top: 96px;
+    margin-left: 192px;
+}
+
+.casella[id=armadio]{
+    width: 32px;
+    height: 32px;
+    margin-top: 224px;
+    margin-left: 32px;
+}
+
+.casella[id=cestini]{
+    width:64px;
+    height: 32px;
+    margin-top: 64px;
+    margin-left: -608px;
+}
+
+.casella[id=partenza]{
+    width:32px;
+    height: 32px;
+    margin-left: 224px;
+    margin-top: 288px;
+    
+}
+
+#soul{
+    display: inline;
+    width: 32px;
+    height: 32px;
+   
+    
+}
+
+#schermata{
+    display: flex;
+    width: 672px;
+    height: 674px;
+    background-image: url("img/5C.jpg");
+}

@@ -8,7 +8,9 @@
   flex-direction: column;
   height: 770px;
 }
-
+.logo{
+  align-self: center;
+}
 
 #play{
   width: 30%;
@@ -25,12 +27,31 @@
   background: #0095cd;
 
   }
-
+  body {
+    /* Prevent the user selecting text in the example */
+    user-select: none;
+  }
+  
+ 
+  
+  .dropzone {
+    width: 200px;
+    height: 20px;
+    background: blueviolet;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
 
   #Home{
+    display: flex;
     width: 100%;
+    flex-direction: column;
   }
-  #option{
+
+  #Gioco{
+    display: none;
+  }
+  .option{
     
     width: 30%;
     border-radius: 20px;
@@ -47,89 +68,8 @@
     margin-top: 5%;
     
     }
-    #Volume{
-      width: 80%;
-    
-    }
-
-  
-    /*Range per il volume*/
-    input[type=range] {
-      height: 38px;
-      -webkit-appearance: none;
-      margin: 10px 0;
-      width: 100%;
-      background: transparent;
-      margin-left: 5%;
-    }
-    input[type=range]:focus {
-      outline: none;
-    }
-    input[type=range]::-webkit-slider-runnable-track {
-      width: 100%;
-      height: 10px;
-      cursor: pointer;
-      box-shadow: 1px 1px 1px #000000;
-      background: #3071A9;
-      border-radius: 5px;
-      border: 1px solid #000000;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      
-      height: 30px;
-      width: 30px;
-      background-image: url("img/fantasmaPixel.png");
-      -webkit-appearance: none;
-      margin-top: -11px;
-    }
-    input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #3071A9;
-    }
-    input[type=range]::-moz-range-track {
-      width: 100%;
-      height: 10px;
-      cursor: pointer;
-      box-shadow: 1px 1px 1px #000000;
-      background: #3071A9;
-      border-radius: 5px;
-      border: 1px solid #000000;
-    }
-   
-    input[type=range]::-ms-track {
-      width: 100%;
-      height: 10px;
-      cursor: pointer;
-      background: transparent;
-      border-color: transparent;
-      color: transparent;
-    }
-    input[type=range]::-ms-fill-lower {
-      background: #3071A9;
-      border: 1px solid #000000;
-      border-radius: 10px;
-      box-shadow: 1px 1px 1px #000000;
-    }
-    input[type=range]::-ms-fill-upper {
-      background: #3071A9;
-      border: 1px solid #000000;
-      border-radius: 10px;
-      box-shadow: 1px 1px 1px #000000;
-    }
-   
-    input[type=range]:focus::-ms-fill-lower {
-      background: #3071A9;
-    }
-    input[type=range]:focus::-ms-fill-upper {
-      background: #3071A9;
-    }
-    #contVol{
-      display: flex;
-      flex-direction: row;
-      align-self: center;
-    }
-
-    #back{
-    
+    .back{
+      width: 120px;
       outline: none;
       cursor: pointer;
       text-align: center;
@@ -142,21 +82,14 @@
       margin-top: 5%;
       align-self: center;
     }
-    #Option{
-      display: none;
-      flex-direction: column;
-    }
-
-    #txtVolume{
-      display: flex;
-      align-self: center;
-      text-align: center;
-      color: black;
-      align-items: center;
-    }
     #pulsanti{
       align-self: center;
       display: flex;
       flex-direction: column;
       width: 100%;
+    }
+    #pulsantiGioco{
+      align-self: center;
+      display: flex;
+      flex-direction: column;
     }
