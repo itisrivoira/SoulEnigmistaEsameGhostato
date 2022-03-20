@@ -55,3 +55,11 @@
     height: 674px;
     background-image: url("img/5C.jpg");
 }
+
+#imgComputer{
+    width: 576px;
+    height: 407px;
+    background-image: url("img/computer.jpg");
+    margin-left: -304px;
+    margin-top: 64px;
+}
