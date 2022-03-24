@@ -1,9 +1,22 @@
+import pygame,sys
+pygame.init() 
 
-global opzioni
-opzioni=0
+clock = pygame.time.Clock()
+clock.tick(60)
+
+#tutte le immagini da inizializzare
+icona = pygame.image.load('img/fantasmaPixel.png') 
+sfondo=pygame.image.load("img/sfondo.jpeg")
+sfondoGioco=pygame.image.load("img/5C.jpg")
+logo=pygame.image.load("img/logo.png")
+logo=pygame.transform.smoothscale(logo, (772, 222))
+
+global schermata
+schermata="Home"
 
 global run
 run=True
+
 class Button:
         
     def __init__(self,opt=0,topColor="#FFFFFF",botColor="#DDDDDD",text="niente",width=0,height=0,pos=(0,0),elevation=0,command=lambda: print("No command activated for this button")):
@@ -64,14 +77,45 @@ class Button:
             self.dynamic_elecation = self.elevation
             self.top_color = self.color1
 
+class Soul:
+    def __init__(self):
+        self.x=300
+        self.y=300
+        self.image=pygame.image.load("img/fantasmaPixel.png")
+        self.velx=0
+        self.vely=0
+
+    def vaiSu(self):
+        self.vely-=2
+
+    def vaiGiu(self):
+        self.vely+=2
+
+    def vaiDx(self):
+        self.velx+=2
+
+    def vaiSx(self):
+        self.velx-=2
+
+    def ferma(self):
+        self.vely=0
+        self.velx=0
 
 def apriOpzioni():
-    global opzioni
-    opzioni=1
+    global schermata
+    schermata="Opzioni"
 
-def chiudiOpzioni():
-    global opzioni
-    opzioni=0
+def apriHome():
+    global schermata
+    schermata="Home"
+
+def apriGioco():
+    global schermata
+    schermata="Gioco"
+
+def apriOptGioco():
+    global schermata
+    schermata="opzioniGioco"
 
 def  alza():
     pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()+0.100)
@@ -79,18 +123,46 @@ def  alza():
 def  abbassa():
     pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()-0.100)
 
-def disegna_oggetti(): 
+def home(): 
     SCREEN.blit(sfondo,(0,0))
     SCREEN.blit(logo,(130,0))
-    if opzioni==0:
-        for b in buttons:
-            if b.opt==0:
-                b.draw()
-    else:
-        for b in buttons:
-            if b.opt==1:
-                b.draw()
-        volume=int(pygame.mixer.music.get_volume()*100) 
+    for b in buttons:
+        if b.opt==0:
+            b.draw()
+
+
+def opzioni():
+    SCREEN.blit(sfondo,(0,0))
+    SCREEN.blit(logo,(130,0))
+    for b in buttons:
+        if b.opt==1:
+            b.draw()
+        volume=int(pygame.mixer.music.get_volume()*10) 
+        myfont = pygame.font.SysFont('Comic Sans MS', 50)
+        volume = myfont.render(str(volume), False, (255, 255, 255))
+        ScrittaV = myfont.render("VOLUME", False, (255, 255, 255))
+
+        SCREEN.blit(volume,(500,250))
+        SCREEN.blit( ScrittaV,(460,200))
+
+def gioco():
+    SCREEN.blit(sfondo,(0,0))
+    SCREEN.blit(sfondoGioco,(200,0))
+    personaggio.x+=personaggio.velx
+    personaggio.y+=personaggio.vely
+    SCREEN.blit(personaggio.image,(personaggio.x,personaggio.y))
+    for b in buttons:
+        if b.opt==2:
+            b.draw()
+
+        
+def opzioniGioco():
+    SCREEN.blit(sfondo,(0,0))
+    SCREEN.blit(logo,(130,0))
+    for b in buttons:
+        if b.opt==4:
+            b.draw()
+        volume=int(pygame.mixer.music.get_volume()*10) 
         myfont = pygame.font.SysFont('Comic Sans MS', 50)
         volume = myfont.render(str(volume), False, (255, 255, 255))
         ScrittaV = myfont.render("VOLUME", False, (255, 255, 255))
@@ -102,16 +174,6 @@ def aggiorna():
     pygame.display.update()  
 
 
-import pygame,sys
-pygame.init() 
-
-
-#tutte le immagini da inizializzare
-icona = pygame.image.load('img/fantasmaPixel.png') 
-sfondo=pygame.image.load("img/sfondo.jpeg")
-logo=pygame.image.load("img/logo.png")
-logo=pygame.transform.smoothscale(logo, (772, 222))
-
 pygame.mixer.music.load("audio/Imagine.mp3")
 pygame.mixer.music.play(-1)   #play della colonna sonora -1 indica per tempo infinito
 pygame.mixer.music.set_volume(0.500)
@@ -122,26 +184,56 @@ pygame.display.set_icon(icona)
 pygame.display.set_caption("SOUL'ENIGMISTA")
 gui_font = pygame.font.Font(None,30)
 buttons=[]
-opt=apriOpzioni
+aOpt=apriOpzioni
 alz=alza
 abb=abbassa
-home=chiudiOpzioni
-button = Button(0,'#007FFF','#0066CC','Play',200,40,(440,250),5)
-button = Button(0,'#007FFF','#0066CC','Option',200,40,(440,350),5,opt)
-button = Button(1,'#000000','#333333','+',40,40,(450,250),5,alz)
-button = Button(1,'#000000','#333333','-',40,40,(570,250),5,abb)
-button = Button(1,'#007FFF','#0066CC','Home',200,40,(440,300),5,home)
+aHome=apriHome
+aGioco=apriGioco
+aOptGioco=apriOptGioco
+Button(0,'#007FFF','#0066CC','Play',200,40,(440,250),5,aGioco)
+Button(0,'#007FFF','#0066CC','Option',200,40,(440,350),5,aOpt)
+Button(1,'#000000','#333333','+',40,40,(450,250),5,alz)
+Button(1,'#000000','#333333','-',40,40,(570,250),5,abb)
+Button(1,'#007FFF','#0066CC','Home',200,40,(440,300),5,aHome)
+Button(2,'#007FFF','#0066CC','Option',200,40,(870,50),5,aOptGioco)
+Button(2,'#007FFF','#0066CC','Home',200,40,(870,100),5,aHome)
+Button(4,'#000000','#333333','+',40,40,(450,250),5,alz)
+Button(4,'#000000','#333333','-',40,40,(570,250),5,abb)
+Button(4,'#007FFF','#0066CC','Torna al gioco',200,40,(440,300),5,aGioco)
 
-
+global personaggio
+personaggio=Soul()
 
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+    
+    if schermata == "Home":
+        home()
+    elif schermata == "Opzioni":
+        opzioni()
+    elif schermata == "Gioco":
+        gioco()
+        for evento in pygame.event.get():
+            if(evento.type == pygame.KEYUP and (evento.key == pygame.K_UP or evento.key == pygame.K_DOWN or evento.key == pygame.K_RIGHT or evento.key == pygame.K_LEFT)):
+                    personaggio.ferma()
+            elif(evento.type == pygame.KEYDOWN):
+                if(evento.key == pygame.K_UP):
+                    personaggio.vaiSu()
+                elif(evento.key == pygame.K_DOWN):
+                    personaggio.vaiGiu()
+                elif(evento.key == pygame.K_RIGHT):
+                    personaggio.vaiDx()
+                elif(evento.key == pygame.K_LEFT):
+                    personaggio.vaiSx()
+            
+                            
+                    
+    elif schermata == "opzioniGioco":
+        opzioniGioco()
 
-    SCREEN.fill('#DCDDD8')
-    disegna_oggetti()
     aggiorna()
 
 	     
