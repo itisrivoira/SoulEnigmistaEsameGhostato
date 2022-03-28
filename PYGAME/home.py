@@ -2,7 +2,7 @@ import pygame,sys
 pygame.init() 
 
 clock = pygame.time.Clock()
-clock.tick(60)
+clock.tick(90)
 
 #tutte le immagini da inizializzare
 icona = pygame.image.load('img/fantasmaPixel.png') 
@@ -86,16 +86,16 @@ class Soul:
         self.vely=0
 
     def vaiSu(self):
-        self.vely-=2
+        self.vely-=1
 
     def vaiGiu(self):
-        self.vely+=2
+        self.vely+=1
 
     def vaiDx(self):
-        self.velx+=2
+        self.velx+=1
 
     def vaiSx(self):
-        self.velx-=2
+        self.velx-=1
 
     def ferma(self):
         self.vely=0

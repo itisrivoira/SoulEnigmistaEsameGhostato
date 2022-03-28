@@ -62,4 +62,19 @@
     background-image: url("img/computer.jpg");
     margin-left: -304px;
     margin-top: 64px;
+    display: flex;
+    justify-content:space-around;
+}
+
+#registro{
+    width: 576px;
+    height: 407px;
+    background-color: black;
+}
+
+.icona{
+    width: 64px;
+    height: 64px;
+    align-self: center;
+    margin-bottom: 50px;
 }

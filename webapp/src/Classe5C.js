@@ -1,7 +1,10 @@
 import React from 'react'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import './Classe5C.css';
-
 import soul from "./img/fantasmaPixel.png"
+import imgReg from "./img/registro.png"
+import appBlocc from "./img/appBlocc.png"
+
 const Classe5C = () => { 
   var Soul;
 
@@ -43,6 +46,32 @@ const Classe5C = () => {
     }
   }, false);
 
+  const creaicona=(contenitore,src,onclick)=>{
+    var icona=document.createElement("img")
+    icona.src=src
+    icona.className="icona"
+    icona.addEventListener('click',()=>{onclick(contenitore)});
+    contenitore.appendChild(icona)
+  }
+
+  const apriRegistro=(computer)=>{
+    var registro = document.createElement("div");
+    var icone = computer.childNodes;
+
+    for (let i = 0; i < icone.length; i++) {
+      icone[i].style.display="none"
+    }
+    registro.id="registro"
+    registro.className="schermata3"
+    computer.appendChild(registro)
+    
+
+  }
+
+  const nonFaccioNiente=()=>{
+    return null
+  }
+
   document.onkeyup=function(e) {
     var charCode = e.keyCode;
     var schermata=document.getElementById("schermata")
@@ -59,6 +88,8 @@ const Classe5C = () => {
             computer.id="imgComputer"
             computer.className="schermata2"
             schermata.appendChild(computer)
+            creaicona(computer,imgReg,apriRegistro)
+            creaicona(computer,appBlocc,nonFaccioNiente)
           }
          
           break;
@@ -81,9 +112,19 @@ const Classe5C = () => {
     }
     if (charCode==37) {
       if(schermata.contains(document.getElementsByClassName("schermata2")[0])){
-   
-        schermata.removeChild(document.getElementsByClassName("schermata2")[0])
+        var computer=document.getElementsByClassName("schermata2")[0]
+        if(computer.contains(document.getElementsByClassName("schermata3")[0])){
+          var icone=document.getElementsByClassName("schermata2")[0].childNodes
+          for (let i = 0; i < icone.length; i++) {
+            icone[i].style.display="inline-block"
+          }
+          computer.removeChild(document.getElementsByClassName("schermata3")[0])
+        }else{
+          schermata.removeChild(document.getElementsByClassName("schermata2")[0])
+        }
+        
       }
+      
     }
   }
 
