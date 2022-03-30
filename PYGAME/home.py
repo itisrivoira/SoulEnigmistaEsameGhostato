@@ -107,18 +107,20 @@ class Soul:
         self.image=pygame.image.load("img/fantasmaPixel.png")
         self.velx=0
         self.vely=0
+        self.heigth=32
+        self.width=32
 
     def vaiSu(self):
-        self.vely-=4
+        self.vely-=1
 
     def vaiGiu(self):
-        self.vely+=4
+        self.vely+=1
 
     def vaiDx(self):
-        self.velx+=4
+        self.velx+=1
 
     def vaiSx(self):
-        self.velx-=4
+        self.velx-=1
 
     def ferma(self):
         self.vely=0
@@ -165,8 +167,8 @@ def opzioni():
         volume = myfont.render(str(volume), False, (255, 255, 255))
         ScrittaV = myfont.render("VOLUME", False, (255, 255, 255))
 
-        SCREEN.blit(volume,(500,250))
-        SCREEN.blit( ScrittaV,(460,200))
+        SCREEN.blit(volume,(500,300))
+        SCREEN.blit( ScrittaV,(420,230))
 
 def gioco():
     SCREEN.blit(sfondo,(0,0))
@@ -190,8 +192,8 @@ def opzioniGioco():
         volume = myfont.render(str(volume), False, (255, 255, 255))
         ScrittaV = myfont.render("VOLUME", False, (255, 255, 255))
 
-        SCREEN.blit(volume,(500,250))
-        SCREEN.blit( ScrittaV,(460,200))
+        SCREEN.blit(volume,(500,300))
+        SCREEN.blit( ScrittaV,(420,230))
 
 def aggiorna():
     pygame.display.update()  
@@ -217,14 +219,14 @@ aGioco=apriGioco
 aOptGioco=apriOptGioco
 Button(0,'#007FFF','#0066CC','Play',200,40,(440,250),5,aGioco)
 Button(0,'#007FFF','#0066CC','Option',200,40,(440,350),5,aOpt)
-Button(1,'#000000','#333333','+',40,40,(450,250),5,alz)
-Button(1,'#000000','#333333','-',40,40,(570,250),5,abb)
-Button(1,'#007FFF','#0066CC','Home',200,40,(440,300),5,aHome)
+Button(1,'#000000','#333333','+',40,40,(405,320),5,alz)
+Button(1,'#000000','#333333','-',40,40,(605,320),5,abb)
+Button(1,'#007FFF','#0066CC','Home',200,40,(420,420),5,aHome)
 Button(2,'#007FFF','#0066CC','Option',200,40,(870,50),5,aOptGioco)
 Button(2,'#007FFF','#0066CC','Home',200,40,(870,100),5,aHome)
-Button(4,'#000000','#333333','+',40,40,(450,250),5,alz)
-Button(4,'#000000','#333333','-',40,40,(570,250),5,abb)
-Button(4,'#007FFF','#0066CC','Torna al gioco',200,40,(440,300),5,aGioco)
+Button(4,'#000000','#333333','+',40,40,(405,320),5,alz)
+Button(4,'#000000','#333333','-',40,40,(605,320),5,abb)
+Button(4,'#007FFF','#0066CC','Torna al gioco',200,40,(420,420),5,aGioco)
 
 Oggetto(armadio,32,64,808,160)
 Oggetto(cestini,64,64,232,32)
@@ -269,7 +271,7 @@ while run:
         move=0
         if(posx<200+633 and posx>200 and posy>32 and posy<580):
             for oggetto in oggetti:
-                if(posx>oggetto.x-20 and posx<oggetto.x2-20 and posy>oggetto.y-30 and posy<oggetto.y2-20):
+                if(posx>oggetto.x-personaggio.width and posx<oggetto.x2-10 and posy>oggetto.y-personaggio.heigth and posy<oggetto.y2-(personaggio.width/2)):
                     move=1
             if (move==0):
                 personaggio.x+=personaggio.velx
