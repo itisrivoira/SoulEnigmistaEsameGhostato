@@ -1,0 +1,14 @@
+#schermataChim{
+    display: flex;
+    width: 670px;
+    height: 670px;
+    background-image: url("img/stanze/chimica.jpg");
+}
+
+#partenzaChim{
+    margin-left:544px;
+    margin-top: 544px;
+    width: 32px;
+    height: 32px;
+    
+}

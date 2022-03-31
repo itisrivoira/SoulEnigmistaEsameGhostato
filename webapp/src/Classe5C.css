@@ -1,39 +1,39 @@
 
-.casella[id=porta]{
+#porta5C{
     width: 32px;
     height: 32px;
     margin-top: 96px;
 }
 
-.casella[id=lavagna]{
+#lavagna{
     width: 64px;
     height: 32px;
     margin-top: 64px;
     margin-left: 256px;
 }
 
-.casella[id=computer]{
+#computer{
     width: 32px;
     height: 64px;
     margin-top: 96px;
     margin-left: 192px;
 }
 
-.casella[id=armadio]{
+#armadio{
     width: 32px;
     height: 32px;
     margin-top: 224px;
     margin-left: 32px;
 }
 
-.casella[id=cestini]{
+#cestini{
     width:64px;
     height: 32px;
     margin-top: 64px;
     margin-left: -608px;
 }
 
-.casella[id=partenza]{
+#partenza5C{
     width:32px;
     height: 32px;
     margin-left: 224px;
@@ -53,17 +53,22 @@
     display: flex;
     width: 672px;
     height: 674px;
-    background-image: url("img/5C.jpg");
+    background-image: url("img/stanze/5C.jpg");
 }
-
-#imgComputer{
+.schermata2{
     width: 576px;
     height: 407px;
-    background-image: url("img/computer.jpg");
     margin-left: -304px;
     margin-top: 64px;
     display: flex;
     justify-content:space-around;
+}
+
+#imgComputer{
+    background-image: url("img/schermate/computer.jpg");
+}
+#imgLavagna{
+    background-image: url("img/schermate/lavagna.png");
 }
 
 #registro{
