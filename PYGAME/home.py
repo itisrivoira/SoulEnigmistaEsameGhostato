@@ -1,9 +1,10 @@
 
 import pygame,sys
 pygame.init() 
-
+MULT=2
+FPS=60*MULT
 clock = pygame.time.Clock()
-clock.tick(60)
+clock.tick(FPS)
 global oggetti
 oggetti=[]
 
@@ -54,7 +55,7 @@ class Button:
             self.opt=opt
 
 
-        # top rectangle 
+            # top rectangle 
             self.top_rect = pygame.Rect(pos,(width,height))
             self.top_color = topColor
 
@@ -111,16 +112,16 @@ class Soul:
         self.width=32
 
     def vaiSu(self):
-        self.vely-=1
+        self.vely-=1/MULT
 
     def vaiGiu(self):
-        self.vely+=1
+        self.vely+=1/MULT
 
     def vaiDx(self):
-        self.velx+=1
+        self.velx+=1/MULT
 
     def vaiSx(self):
-        self.velx-=1
+        self.velx-=1/MULT
 
     def ferma(self):
         self.vely=0
@@ -266,6 +267,7 @@ while run:
                 pygame.quit()
                 sys.exit()
     elif schermata == "Gioco":
+        #gestire colliosioni
         posx=personaggio.x+personaggio.velx
         posy=personaggio.y+personaggio.vely
         move=0
