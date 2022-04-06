@@ -5,11 +5,22 @@ MULT=2
 FPS=60*MULT
 clock = pygame.time.Clock()
 clock.tick(FPS)
+
 global oggetti
 oggetti=[]
 
+global schermata
+schermata="Home"
+
+global run
+run=True
+
+#impostazione schermo
+SCREEN = pygame.display.set_mode((1071,770))
+
+
 #tutte le immagini da inizializzare
-icona = pygame.image.load('img/fantasmaPixel.png') 
+icona = pygame.image.load('img/fantasmaPixel.png')
 sfondo=pygame.image.load("img/sfondo.jpeg")
 sfondoGioco=pygame.image.load("img/5C.jpg")
 logo=pygame.image.load("img/logo.png")
@@ -20,11 +31,8 @@ lavagna=pygame.image.load("img/lavagna.jpg")
 cattedra=pygame.image.load("img/cattedra.jpg")
 logo=pygame.transform.smoothscale(logo, (772, 222))
 
-global schermata
-schermata="Home"
-
-global run
-run=True
+pygame.display.set_icon(icona)
+pygame.display.set_caption("SOUL'ENIGMISTA")
 
 class Oggetto:
     def __init__(self,img,width,heigth,x,y):
@@ -101,6 +109,7 @@ class Button:
             self.dynamic_elecation = self.elevation
             self.top_color = self.color1
 
+
 class Soul:
     def __init__(self):
         self.x=600
@@ -126,6 +135,7 @@ class Soul:
     def ferma(self):
         self.vely=0
         self.velx=0
+
 
 def apriOpzioni():
     global schermata
@@ -199,15 +209,13 @@ def opzioniGioco():
 def aggiorna():
     pygame.display.update()  
 
-
+#Audio
 pygame.mixer.music.load("audio/Imagine.mp3")
 pygame.mixer.music.play(-1)   #play della colonna sonora -1 indica per tempo infinito
 pygame.mixer.music.set_volume(0.500)
 
 
-SCREEN = pygame.display.set_mode((1071,770))
-pygame.display.set_icon(icona)
-pygame.display.set_caption("SOUL'ENIGMISTA")
+
 
 
 gui_font = pygame.font.Font(None,30)
