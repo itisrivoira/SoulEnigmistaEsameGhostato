@@ -1,6 +1,7 @@
 
 import pygame,sys
 pygame.init() 
+
 MULT=2
 FPS=60*MULT
 clock = pygame.time.Clock()
@@ -15,8 +16,14 @@ schermata="Home"
 global run
 run=True
 
+global WIDTH
+WIDTH=1071
+global HEIGTH
+HEIGTH=770
+
+
 #impostazione schermo
-SCREEN = pygame.display.set_mode((1071,770))
+SCREEN = pygame.display.set_mode((WIDTH,HEIGTH))
 
 
 #tutte le immagini da inizializzare
@@ -35,7 +42,7 @@ pygame.display.set_icon(icona)
 pygame.display.set_caption("SOUL'ENIGMISTA")
 
 class Oggetto:
-    def __init__(self,img,width,heigth,x,y):
+    def __init__(self,img="",width=0,heigth=0,x=0,y=0,funz=lambda: print("Nessuna interazione")):
         self.img=img
         self.heigth=heigth
         self.width=width
@@ -43,6 +50,8 @@ class Oggetto:
         self.x2=x+width
         self.y=y
         self.y2=y+heigth
+        self.interazione=funz
+        
         oggetti.append(self)
         
          
@@ -119,6 +128,7 @@ class Soul:
         self.vely=0
         self.heigth=32
         self.width=32
+        self.direzione=""
 
     def vaiSu(self):
         self.vely-=1/MULT
@@ -237,6 +247,7 @@ Button(4,'#000000','#333333','+',40,40,(405,320),5,alz)
 Button(4,'#000000','#333333','-',40,40,(605,320),5,abb)
 Button(4,'#007FFF','#0066CC','Torna al gioco',200,40,(420,420),5,aGioco)
 
+
 Oggetto(armadio,32,64,808,160)
 Oggetto(cestini,64,64,232,32)
 Oggetto(lavagna,64,64,520,-5)
@@ -294,12 +305,42 @@ while run:
             elif(evento.type == pygame.KEYDOWN):
                 if(evento.key == pygame.K_UP):
                     personaggio.vaiSu()
+                    personaggio.direzione="SU"
                 elif(evento.key == pygame.K_DOWN):
                     personaggio.vaiGiu()
+                    personaggio.direzione="GIU"
                 elif(evento.key == pygame.K_RIGHT):
                     personaggio.vaiDx()
+                    personaggio.direzione="DX"
                 elif(evento.key == pygame.K_LEFT):
                     personaggio.vaiSx()
+                    personaggio.direzione="SX"
+                elif(evento.key == pygame.K_RETURN):
+                    if(personaggio.direzione=="SX"):
+                        dirx=personaggio.x-32
+                        diry=personaggio.y
+                        for oggetto in oggetti:
+                            if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                                oggetto.interazione()
+                    elif(personaggio.direzione=="DX"):
+                        dirx=personaggio.x+32
+                        diry=personaggio.y
+                        for oggetto in oggetti:
+                                if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                                    oggetto.interazione()
+                    elif(personaggio.direzione=="SU"):
+                        dirx=personaggio.x
+                        diry=personaggio.y-32
+                        for oggetto in oggetti:
+                            if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                                oggetto.interazione()
+                    elif(personaggio.direzione=="GIU"):
+                        dirx=personaggio.x
+                        diry=personaggio.y+32
+                        for oggetto in oggetti:
+                            if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                                oggetto.interazione()
+
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
