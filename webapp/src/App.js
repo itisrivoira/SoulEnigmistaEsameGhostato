@@ -19,7 +19,7 @@ function App() {
   
   const [FinestraOpt, setFinestraOpt] = useState("Home")
   const [Componente, setComponente] = useState("")
-  const [Zaino,setZaino]= useState([])
+  const [Zaino,setZaino]= useState({so4:null,h2o:null})
   
   
   const Apri=(apri, chiudi)=> {
@@ -85,6 +85,13 @@ function App() {
       event.target.appendChild( Soul );
       Soul.style.marginLeft="0px"
       Soul.style.marginTop="0px"
+    }else if (event.target.id == "Zaino") {
+      if (Soul.id!="soul") {
+        event.target.style.background = "";
+        Soul.parentNode.removeChild( Soul );
+        event.target.appendChild( Soul );
+      }
+      
     }
   }, false);
 
@@ -117,6 +124,7 @@ function App() {
   document.onkeyup=function(e) {
     var charCode = e.keyCode;
     var schermata=document.getElementById("schermata")
+    var schermataChim=document.getElementById("schermataChim")
     //alert(charCode)
     if (charCode==13) {
       var Posizione=document.getElementById("soul").parentNode.id
@@ -166,13 +174,26 @@ function App() {
           Cambia(Corridoio)
           inserisci("portaCor")
           break;
+        case "banconeChim1":
+          var oggetto=document.createElement("img");
+          oggetto.src=soul
+          oggetto.className="oggetto"
+          oggetto.draggable=true
+          var bancone = document.createElement("div");
+          bancone.id="bancone"
+          bancone.className="schermata2"
+          schermataChim.appendChild(bancone)
+          if(Zaino.so4==null){
+            bancone.appendChild(oggetto)
+          }
+          break;
         default:
           alert(document.getElementById("soul").parentNode.id)
           break;
       }
     }
     if (charCode==37) {
-      if(schermata.contains(document.getElementsByClassName("schermata2")[0])){
+      if(document.contains(document.getElementsByClassName("schermata2")[0])){
         var computer=document.getElementsByClassName("schermata2")[0]
         if(computer.contains(document.getElementsByClassName("schermata3")[0])){
           var icone=document.getElementsByClassName("schermata2")[0].childNodes
@@ -181,11 +202,11 @@ function App() {
           }
           computer.removeChild(document.getElementsByClassName("schermata3")[0])
         }else{
-          schermata.removeChild(document.getElementsByClassName("schermata2")[0])
+          document.getElementsByClassName("schermata2")[0].parentNode.removeChild(document.getElementsByClassName("schermata2")[0])
         }
-        
+       
       }
-      
+     
     }
     if (charCode==77){
       var finestra=document.getElementById("Contenitore")

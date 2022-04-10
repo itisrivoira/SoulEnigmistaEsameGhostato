@@ -1,24 +1,32 @@
 
 
-
 #Contenitore{
   background-image:url("img/sfondo.jpeg");
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  flex-direction: row;
   height: 770px;
 }
 .logo{
   align-self: center;
 }
-
+#Zaino{
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+}
+#bancone{
+  width:300px;
+  height: 300px;
+  background-color: #fff;
+}
 #Corridoio{
   display: none;
 }
-#Zaino{
-  background-color: #fff;
-  width:200px;
-  height:200px
+.casella{
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 #play{
   width: 30%;
@@ -35,10 +43,7 @@
   background: #0095cd;
 
   }
-  body {
-    /* Prevent the user selecting text in the example */
-    user-select: none;
-  }
+  
   
  
   
@@ -76,12 +81,6 @@
     margin-top: 5%;
     
     }
-    .casella{
-      display: flex;
-      align-content: center;
-      justify-content: center;
-    }
-
     .back{
       width: 120px;
       outline: none;
