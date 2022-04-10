@@ -19,6 +19,7 @@ function App() {
   
   const [FinestraOpt, setFinestraOpt] = useState("Home")
   const [Componente, setComponente] = useState("")
+  const [Zaino,setZaino]= useState([])
   
   
   const Apri=(apri, chiudi)=> {
@@ -116,7 +117,7 @@ function App() {
   document.onkeyup=function(e) {
     var charCode = e.keyCode;
     var schermata=document.getElementById("schermata")
-
+    //alert(charCode)
     if (charCode==13) {
       var Posizione=document.getElementById("soul").parentNode.id
       switch (Posizione) {
@@ -186,6 +187,27 @@ function App() {
       }
       
     }
+    if (charCode==77){
+      var finestra=document.getElementById("Contenitore")
+        if (finestra.contains(document.getElementById("Zaino"))) {
+          finestra.removeChild(document.getElementById("Zaino"))
+        }else{
+          var menuZaino = document.createElement("div");
+          menuZaino.id="Zaino"
+          finestra.appendChild(menuZaino)
+          Zaino.map((value)=>{
+            menuZaino.append(value)
+          })
+        }
+      
+    }
+    if (charCode==79){
+      Apri("Option","Gioco")
+      
+    }
+    if(charCode==72){
+      Apri("Home","Gioco") 
+    }
   }
   return (
 
@@ -205,10 +227,7 @@ function App() {
           <Classe5C/>
         </div>
         {Componente}
-        <div id="pulsantiGioco">
-            <input type="button" class="back" value="Torna al Menu" onClick={()=>Apri("Home","Gioco")}/>
-            <input class='back' type="button" value="OPTION"  onClick={()=>Apri("Option","Gioco") }/>
-        </div>      
+        
       </div>
       <audio id="cs_audio" loop controls autoPlay hidden="true">
         <source src={imagine} type="audio/mpeg"/>

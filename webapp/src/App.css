@@ -1,11 +1,11 @@
 
 
+
 #Contenitore{
   background-image:url("img/sfondo.jpeg");
   display: flex;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   height: 770px;
 }
 .logo{
@@ -15,7 +15,11 @@
 #Corridoio{
   display: none;
 }
-
+#Zaino{
+  background-color: #fff;
+  width:200px;
+  height:200px
+}
 #play{
   width: 30%;
   border-radius: 20px;
@@ -72,6 +76,12 @@
     margin-top: 5%;
     
     }
+    .casella{
+      display: flex;
+      align-content: center;
+      justify-content: center;
+    }
+
     .back{
       width: 120px;
       outline: none;
