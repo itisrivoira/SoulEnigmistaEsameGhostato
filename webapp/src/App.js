@@ -11,6 +11,7 @@ import appBlocc from "./img/applicazioni/appBlocc.png"
 import Corridoio from './Corridoio';
 import Chimica from './Chimica';
 import soul from "./img/fantasmaPixel.png"
+import merendina from "./img/merendinapx.png"
 
 function App() {
   useEffect(() => {
@@ -19,7 +20,7 @@ function App() {
   
   const [FinestraOpt, setFinestraOpt] = useState("Home")
   const [Componente, setComponente] = useState("")
-  const [Zaino,setZaino]= useState({so4:null,h2o:null})
+  const [Zaino,setZaino]= useState([])
   
   
   const Apri=(apri, chiudi)=> {
@@ -49,10 +50,10 @@ function App() {
   }
 
 
-  var Soul;
+  var trasportato;
   document.addEventListener("dragstart", function(event) {
     // Metto l'immagine di Soul in una variabile
-    Soul = event.target;
+    trasportato = event.target;
   }, false);
 
   document.addEventListener("dragover", function(event) {
@@ -81,15 +82,19 @@ function App() {
     // Inserisco l'immagine di Soul nella casella
     if (event.target.className == "casella") {
       event.target.style.background = "";
-      Soul.parentNode.removeChild( Soul );
-      event.target.appendChild( Soul );
-      Soul.style.marginLeft="0px"
-      Soul.style.marginTop="0px"
+      trasportato.parentNode.removeChild( trasportato );
+      event.target.appendChild( trasportato );
+      trasportato.style.marginLeft="0px"
+      trasportato.style.marginTop="0px"
     }else if (event.target.id == "Zaino") {
-      if (Soul.id!="soul") {
+      if (trasportato.id!="soul") {
         event.target.style.background = "";
-        Soul.parentNode.removeChild( Soul );
-        event.target.appendChild( Soul );
+        trasportato.parentNode.removeChild( trasportato);
+        event.target.appendChild( trasportato);
+        trasportato.style.width="32px"
+        trasportato.style.height="32px"
+        trasportato.style.margin=0
+        Zaino.push(trasportato)
       }
       
     }
@@ -174,19 +179,37 @@ function App() {
           Cambia(Corridoio)
           inserisci("portaCor")
           break;
-        case "banconeChim1":
-          var oggetto=document.createElement("img");
-          oggetto.src=soul
-          oggetto.className="oggetto"
-          oggetto.draggable=true
-          var bancone = document.createElement("div");
-          bancone.id="bancone"
-          bancone.className="schermata2"
-          schermataChim.appendChild(bancone)
-          if(Zaino.so4==null){
-            bancone.appendChild(oggetto)
-          }
+        case "armadioChim":
+          if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+            var armadio = document.createElement("div");
+            armadio.id="imgArmadioChim"
+            armadio.className="schermata2"
+            schermataChim.appendChild(armadio)
+            var flag=0
+            var oggetto=document.createElement("img");
+            oggetto.src=merendina
+            oggetto.className="oggetto"
+            oggetto.draggable=true
+            oggetto.id="merendina"
+            Zaino.map((value)=>{
+                if(value.id=="merendina"){
+                  flag=1
+                }
+    
+              })
+              if (flag==0){
+                armadio.appendChild(oggetto)
+              }
+            }
           break;
+          case "armadioChimLock":
+            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+              var armadio = document.createElement("div");
+              armadio.id="imgArmadioChimLock"
+              armadio.className="schermata2"
+              schermataChim.appendChild(armadio)
+            }
+            break;
         default:
           alert(document.getElementById("soul").parentNode.id)
           break;

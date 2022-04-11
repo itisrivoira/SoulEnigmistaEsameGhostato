@@ -4,7 +4,7 @@ import './Classe5C.css';
 
 
 
-const Classe5C = (props) => { 
+const Classe5C = () => { 
     return (
         <div id='schermata'>
           <div class="casella" id="porta5C"  ></div>

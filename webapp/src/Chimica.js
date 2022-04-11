@@ -10,7 +10,9 @@ const Chimica = () => {
         <div class="casella" id="banconeChim3" ></div>  
         <div class="casella" id="banconeChim4" ></div> 
         <div class="casella" id="banconeChim5" ></div>  
-        <div class="casella" id="banconeChim6" ></div>   
+        <div class="casella" id="banconeChim6" ></div> 
+        <div class="casella" id="armadioChim" ></div> 
+        <div class="casella" id="armadioChimLock" ></div> 
     </div>
   )
 }
