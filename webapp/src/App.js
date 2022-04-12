@@ -87,7 +87,7 @@ function App() {
       trasportato.style.marginLeft="0px"
       trasportato.style.marginTop="0px"
     }else if (event.target.id == "Zaino") {
-      if (trasportato.id!="soul") {
+      if (trasportato.className=="oggetto") {
         event.target.style.background = "";
         trasportato.parentNode.removeChild( trasportato);
         event.target.appendChild( trasportato);
@@ -96,6 +96,8 @@ function App() {
         trasportato.style.margin=0
         Zaino.push(trasportato)
       }
+      
+    }else if(event.target.id="baker"){
       
     }
   }, false);
@@ -107,7 +109,24 @@ function App() {
     icona.addEventListener('click',()=>{onclick(contenitore)});
     contenitore.appendChild(icona)
   }
+  const creaOggetto=(img,id,schermo)=>{
+    
+    let flag=0
+    Zaino.map((value)=>{
+        if(value.id==id){
+          flag=1
+        }
 
+      })
+      if (flag==0){
+        let oggetto=document.createElement("img");
+        oggetto.src=img
+        oggetto.className="oggetto"
+        oggetto.draggable=true
+        oggetto.id=id
+        schermo.appendChild(oggetto)
+      }
+  }
   const apriRegistro=(computer)=>{
     var registro = document.createElement("div");
     var icone = computer.childNodes;
@@ -185,21 +204,8 @@ function App() {
             armadio.id="imgArmadioChim"
             armadio.className="schermata2"
             schermataChim.appendChild(armadio)
-            var flag=0
-            var oggetto=document.createElement("img");
-            oggetto.src=merendina
-            oggetto.className="oggetto"
-            oggetto.draggable=true
-            oggetto.id="merendina"
-            Zaino.map((value)=>{
-                if(value.id=="merendina"){
-                  flag=1
-                }
-    
-              })
-              if (flag==0){
-                armadio.appendChild(oggetto)
-              }
+            creaOggetto(merendina,"merendina",armadio)
+            creaOggetto(merendina,"merendina2",armadio)
             }
           break;
           case "armadioChimLock":

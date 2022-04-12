@@ -29,6 +29,12 @@
     height: 64px;
     margin-top: 110px;
 }
+#merendina2{
+    width: 64px;
+    height: 64px;
+    margin-top: 110px;
+    margin-left: 64px;
+}
 #imgArmadioChim{
     background-image: url("img/schermate/armadioApertoVuoto.png");
     margin-left: -48px;
