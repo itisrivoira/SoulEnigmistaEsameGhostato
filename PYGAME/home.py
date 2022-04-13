@@ -1,5 +1,4 @@
 
-from matplotlib.pyplot import flag
 import pygame,sys
 pygame.init() 
 
@@ -170,16 +169,16 @@ class Soul:
         self.direzione=""
 
     def vaiSu(self):
-        self.vely-=5/MULT
+        self.vely-=1/MULT
 
     def vaiGiu(self):
-        self.vely+=5/MULT
+        self.vely+=1/MULT
 
     def vaiDx(self):
-        self.velx+=5/MULT
+        self.velx+=1/MULT
 
     def vaiSx(self):
-        self.velx-=5/MULT
+        self.velx-=1/MULT
 
     def ferma(self):
         self.vely=0
