@@ -1,0 +1,23 @@
+#schermataCor{
+    margin-top: 15%;
+    display: flex;
+    width: 672px;
+    height: 348px;
+    background-image: url("img/stanze/corridoio.png");
+}
+
+
+#partenzaCor{
+    width:32px;
+    height: 32px;
+    margin-left:514px;
+    margin-top: 157px;   
+}
+
+#portaCor{
+    width:64px;
+    height: 32px;
+    margin-left: 64px;
+    margin-top: 96px;
+
+}
