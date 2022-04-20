@@ -1,5 +1,7 @@
 
-
+#imgBancone{
+  background-color: #fff;
+}
 #Contenitore{
   background-image:url("img/sfondo.jpeg");
   display: flex;

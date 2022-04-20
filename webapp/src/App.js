@@ -21,6 +21,7 @@ function App() {
   const [FinestraOpt, setFinestraOpt] = useState("Home")
   const [Componente, setComponente] = useState("")
   const [Zaino,setZaino]= useState([])
+
   
   
   const Apri=(apri, chiudi)=> {
@@ -76,7 +77,7 @@ function App() {
     }
   
   }, false);
-  
+  var counter=0
   document.addEventListener("drop", function(event) {
 
     // Inserisco l'immagine di Soul nella casella
@@ -97,9 +98,29 @@ function App() {
         Zaino.push(trasportato)
       }
       
-    }else if(event.target.id="baker"){
+    }else if(event.target.id=="imgBancone"){
+      if(trasportato.parentNode!=null){
+        trasportato.parentNode.removeChild( trasportato );
+      }
+      
+      
+      if(counter==1){
+        let oggetto=document.createElement("img");
+        oggetto.src=merendina
+        oggetto.className="oggetto"
+        oggetto.draggable=true
+        oggetto.id="acido"
+      
+        Zaino.push(oggetto)
+        counter=0
+      }else{
+        counter=1
+      
+      }
       
     }
+       
+    
   }, false);
 
   const creaicona=(contenitore,src,onclick)=>{
@@ -216,6 +237,15 @@ function App() {
               schermataChim.appendChild(armadio)
             }
             break;
+          case "banconeChim6":
+            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+              var bancone = document.createElement("div");
+              bancone.id="imgBancone"
+              bancone.value=0
+              bancone.className="schermata2"
+              schermataChim.appendChild(bancone)
+            }
+           break;
         default:
           alert(document.getElementById("soul").parentNode.id)
           break;
