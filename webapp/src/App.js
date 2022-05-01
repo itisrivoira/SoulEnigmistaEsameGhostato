@@ -15,12 +15,14 @@ import merendina from "./img/merendinapx.png"
 
 function App() {
   useEffect(() => {
-    inserisci("partenza5C")
+    inserisci("partenza5C");
+    
   }, [])
   
   const [FinestraOpt, setFinestraOpt] = useState("Home")
   const [Componente, setComponente] = useState("")
-  const [Zaino,setZaino]= useState([])
+  const [Zaino,setZaino]=useState([])
+  var zaino=Zaino
 
   
   
@@ -78,6 +80,8 @@ function App() {
   
   }, false);
   var counter=0
+
+ 
   document.addEventListener("drop", function(event) {
 
     // Inserisco l'immagine di Soul nella casella
@@ -95,14 +99,17 @@ function App() {
         trasportato.style.width="32px"
         trasportato.style.height="32px"
         trasportato.style.margin=0
-        Zaino.push(trasportato)
+        zaino=Zaino
+        zaino.push(trasportato)
+        setZaino(zaino)
       }
       
     }else if(event.target.id=="imgBancone"){
       if(trasportato.parentNode!=null){
         trasportato.parentNode.removeChild( trasportato );
       }
-      
+
+      zaino.splice(0,1)
       
       if(counter==1){
         let oggetto=document.createElement("img");
@@ -110,12 +117,48 @@ function App() {
         oggetto.className="oggetto"
         oggetto.draggable=true
         oggetto.id="acido"
-      
-        Zaino.push(oggetto)
+        let flag=0
+        zaino.map((obj)=>{
+          
+          if(obj.id=="acido"){
+            flag=1
+          }
+        })
+        if (flag==0){
+          zaino.push(oggetto)
+          
+        }
+        
         counter=0
       }else{
         counter=1
       
+      }
+      setZaino(zaino)
+    }else if(event.target.id=="imgArmadioChimLock"){
+      zaino=Zaino
+      zaino.splice(0,1)
+      if(trasportato.id=="acido"){
+        if(trasportato.parentNode!=null){
+          trasportato.parentNode.removeChild( trasportato );
+        }
+        
+        event.target.id="imgArmadioChimOpen"
+        creaOggetto(merendina,"chiave",event.target)
+        
+      }
+      setZaino(zaino)
+      document.getElementById("armadioChimLock").id="armadioChimOpen"
+    }else if(event.target.id=="imgArmadio5CLock"){
+      if(trasportato.id=="chiave"){
+        if(trasportato.parentNode!=null){
+          trasportato.parentNode.removeChild( trasportato );
+        }
+        zaino=Zaino
+        zaino.splice(0,1)
+        setZaino(zaino)
+        event.target.id="imgArmadio5COpen"
+        document.getElementById("armadio").id="armadio5COpen"
       }
       
     }
@@ -133,7 +176,8 @@ function App() {
   const creaOggetto=(img,id,schermo)=>{
     
     let flag=0
-    Zaino.map((value)=>{
+    zaino=Zaino
+    zaino.map((value)=>{
         if(value.id==id){
           flag=1
         }
@@ -175,7 +219,12 @@ function App() {
       var Posizione=document.getElementById("soul").parentNode.id
       switch (Posizione) {
         case "armadio":
-          alert("Sei davanti all'armadio")
+          if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
+            var armadio = document.createElement("div");
+            armadio.id="imgArmadio5CLock"
+            armadio.className="schermata2"
+            schermata.appendChild(armadio)
+          }
           break;
         case "computer":
           if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
@@ -246,6 +295,24 @@ function App() {
               schermataChim.appendChild(bancone)
             }
            break;
+          case "armadioChimOpen":
+            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+              var armadio = document.createElement("div");
+              armadio.id="imgArmadioChimOpen"
+              armadio.className="schermata2"
+              schermataChim.appendChild(armadio)
+              creaOggetto(merendina,"chiave",armadio)
+              
+            }
+            break;
+          case "armadio5COpen":
+            if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
+              var armadio = document.createElement("div");
+              armadio.id="imgArmadio5COpen"
+              armadio.className="schermata2"
+              schermata.appendChild(armadio)
+              
+            }
         default:
           alert(document.getElementById("soul").parentNode.id)
           break;
@@ -268,14 +335,17 @@ function App() {
      
     }
     if (charCode==77){
+      zaino=Zaino
+      
       var finestra=document.getElementById("Contenitore")
         if (finestra.contains(document.getElementById("Zaino"))) {
           finestra.removeChild(document.getElementById("Zaino"))
         }else{
           var menuZaino = document.createElement("div");
           menuZaino.id="Zaino"
+          console.log(zaino)
           finestra.appendChild(menuZaino)
-          Zaino.map((value)=>{
+          zaino.map((value)=>{
             menuZaino.append(value)
           })
         }

@@ -26,6 +26,22 @@
     margin-left: 32px;
 }
 
+#armadio5COpen{
+    width: 32px;
+    height: 32px;
+    margin-top: 224px;
+    margin-left: 32px;
+}
+
+#imgArmadio5CLock{
+    background-image: url("img/schermate/armadioChiuso.png");
+    margin-left: -294px;
+}
+#imgArmadio5COpen{
+    background-image: url("img/schermate/armadioApertoVuoto.png");
+    margin-left: -294px;
+}
+
 #cestini{
     width:64px;
     height: 32px;

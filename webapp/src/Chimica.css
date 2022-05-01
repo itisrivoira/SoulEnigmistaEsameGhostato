@@ -18,17 +18,32 @@
     margin-top: 96px;
     margin-left: -90px;
 }
+#chiave{
+    width: 64px;
+    height: 64px;
+    margin-top: 110px;
+}
+
 #armadioChimLock{
     width:64px;
     height: 32px;
     margin-top: 96px;
     margin-left: -136px;
 }
+
+#armadioChimOpen{
+    width:64px;
+    height: 32px;
+    margin-top: 96px;
+    margin-left: -136px;
+}
+
 #merendina{
     width: 64px;
     height: 64px;
     margin-top: 110px;
 }
+
 #merendina2{
     width: 64px;
     height: 64px;
@@ -41,6 +56,11 @@
 }
 #imgArmadioChimLock{
     background-image: url("img/schermate/armadioChiuso.png");
+    margin-left: -48px;
+}
+
+#imgArmadioChimOpen{
+    background-image: url("img/schermate/armadioApertoVuoto.png");
     margin-left: -48px;
 }
 #banconeChim1{
