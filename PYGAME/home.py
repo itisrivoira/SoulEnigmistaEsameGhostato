@@ -1,5 +1,4 @@
 
-from matplotlib.pyplot import flag
 import pygame,sys
 pygame.init() 
 
