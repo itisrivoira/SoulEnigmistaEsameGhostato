@@ -12,6 +12,10 @@ import Corridoio from './Corridoio';
 import Chimica from './Chimica';
 import soul from "./img/fantasmaPixel.png"
 import merendina from "./img/merendinapx.png"
+import acido from "./img/acido.jpg"
+import acqua from "./img/acqua.jpg"
+import chiave from "./img/chiave.jpg"
+
 
 function App() {
   useEffect(() => {
@@ -113,7 +117,7 @@ function App() {
       
       if(counter==1){
         let oggetto=document.createElement("img");
-        oggetto.src=merendina
+        oggetto.src=acido
         oggetto.className="oggetto"
         oggetto.draggable=true
         oggetto.id="acido"
@@ -144,7 +148,7 @@ function App() {
         }
         
         event.target.id="imgArmadioChimOpen"
-        creaOggetto(merendina,"chiave",event.target)
+        creaOggetto(chiave,"chiave",event.target)
         
       }
       setZaino(zaino)
@@ -274,7 +278,7 @@ function App() {
             armadio.id="imgArmadioChim"
             armadio.className="schermata2"
             schermataChim.appendChild(armadio)
-            creaOggetto(merendina,"merendina",armadio)
+            creaOggetto(acqua,"merendina",armadio)
             creaOggetto(merendina,"merendina2",armadio)
             }
           break;
@@ -301,7 +305,7 @@ function App() {
               armadio.id="imgArmadioChimOpen"
               armadio.className="schermata2"
               schermataChim.appendChild(armadio)
-              creaOggetto(merendina,"chiave",armadio)
+              creaOggetto(chiave,"chiave",armadio)
               
             }
             break;
