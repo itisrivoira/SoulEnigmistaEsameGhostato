@@ -66,6 +66,7 @@ schermataArm=pygame.image.load("img/armadioApertoVuoto.png").convert()
 acqua=pygame.image.load("img/acqua.jpg").convert()
 logo=pygame.transform.smoothscale(logo, (772, 222))
 zaino=pygame.transform.smoothscale(classe5C, (200, 200))
+bancoChimica=pygame.image.load("img/Banco2.png").convert_alpha()
 
 
 pygame.display.set_icon(icona)
@@ -200,16 +201,16 @@ class Soul:
         self.direzione=""
 
     def vaiSu(self):
-        self.vely-=5
+        self.vely-=1
 
     def vaiGiu(self):
-        self.vely+=5
+        self.vely+=1
 
     def vaiDx(self):
-        self.velx+=5
+        self.velx+=1
 
     def vaiSx(self):
-        self.velx-=5
+        self.velx-=1
 
     def ferma(self):
         self.vely=0
@@ -318,7 +319,7 @@ Oggetto("corridoio",porta,64,32,160,64,lambda: cambiaStanza(stzChimica,768,556))
 strAcqua=Strumento(acqua,500,200,32,32)
 Oggetto("Chimica",porta,64,32,746,588,lambda: cambiaStanza(stzCorridoio,160,96))
 Oggetto("Chimica",armadio,32,64,320,32,lambda:aggOggSch(strAcqua,lambda: assegna(lambda:apriSchermata(schermataArm,246,120))))
-
+Oggetto("Chimica",bancoChimica,129,97,320,150,lambda:assegna( lambda:apriSchermata(computer,246,120))) #modificare
 #creazione banchi
 xO=135
 yO=160
