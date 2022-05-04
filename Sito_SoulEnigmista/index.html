@@ -1,197 +1,190 @@
 <html>
     <head>
-        <title>Home | SoulEnigmista</title>
-        <link rel = "stylesheet" type = "text/css" href = "style.css">
+        <title>Home | Soul Enigmista</title>
+        <link rel = "stylesheet" type = "text/css" href = "css/style.css">
+        <link rel = "stylesheet" type = "text/css" href = "css/mobile.css">
+        <link rel = "icon" type = "image/x-icon" href = "img/Personaggi/Soul.png">
     </head>
-    <body BGCOLOR = "#292929">
-        <div id = "navbar">
-            <img id = "imgLogoSoulEnigmista" src = "img/Logo_SoulEnigmista.png">
-            <div id = "txtNavbar">
-                <a class = "txtMenu">HOME</a>
-                <a class = "txtMenu">ABOUT US</a>
-                <a class = "txtMenu">CONTACTS</a>
+    <body>
+        <div id = "contenitore">
+            
+            <div id = "navbar">
+                <img id = "logoSoulEnigmista" src = "img/Loghi/Logo_SoulEnigmista.png">
+                <a id = "home">Home</a>
+                <a id = "about_us">About Us</a>
+                <a id = "contacts">Contacts</a>
+                <input id = "login" type = "submit" value = "LOGIN">
             </div>
-            <form>
-                <input id = "btnAccedi" type = "submit" value = "LOGIN">
-            </form>
-        </div>
-        <div id = "home">
-            <img id = "imgSfondoStanze" src = "img/Sfondo_Stanze.png">
-            <div id = "txtHome">
-                <div class = "txtTitoloHome">INIZIA ORA</div>
-                <div class = "txtTitoloHome">LA TUA AVVENTURA</div>
-                <div class = "txtSottotitoloHome">RISOLVI TUTTI GLI ENIGMI DELLA SCUOLA</div>
-                <form>
-                    <input id = "btnGiocaOra" type = "submit" value = "GIOCA ORA   ➜">
-                </form>
+
+            <div id = "homePage">
+                <img id = "sfondoHome" src = "img/Sfondi/Sfondo_Home.png">
+                <h1 id = "titoloHome">INIZIA ORA<br>LA TUA AVVENTURA</h1>
+                <p id = "sottotitoloHome">RISOLVI TUTTI GLI ENIGMI DELLA SCUOLA PER VINCERE!</p>
+                <input id = "giocaOra" type = "submit" value = "GIOCA ORA   ➜">
             </div>
-        </div>
-        <div id = "informazioni">
-            <div class = "divInformazioni">
-            <center>
-                <img class = "imgInformazioni" src = "img/Icona_ABC.png">
-                <div class = "txtTitoloInformazioni">RISOLVI</div>
-                <div class = "txtParagrafoInformazioni">Divertiti a risolvere gli<br>enigmi di matematica, fisica<br>italiano e molte altre materie</div>
-            </center>
+
+            <div id = "informazioni">
+                <div class = "contenitoreInformazioni">
+                    <center>
+                        <img class = "iconeInformazioni" src = "img/Icone/Icona_ABC.png">
+                        <h1 class = "titoloInformazioni">RISOLVI</h1>
+                        <p class = "paragrafoInformazioni">Divertiti a risolvere gli<br>enigmi di tantissime<br>materie scolastiche</p>
+                    </center>
+                </div>
+                <div class = "contenitoreInformazioni">
+                    <center>
+                        <img class = "iconeInformazioni" src = "img/Icone/Icona_Teschio.png">
+                        <h1 class = "titoloInformazioni">SOPRAVIVI</h1>
+                        <p class = "paragrafoInformazioni">Attento ai bidelli che<br>ti possono colpire con<br>le loro aspirafantasmi</p>
+                    </center>
+                </div>
+                <div class = "contenitoreInformazioni">
+                    <center>
+                        <img class = "iconeInformazioni" src = "img/Icone/Icona_Cappello_Diploma.png">
+                        <h1 class = "titoloInformazioni">DIPLOMATI</h1>
+                        <p class = "paragrafoInformazioni">Vinci il gioco risolvendo<br>tutti i rompicapo per<br>affrontare l'esame finale</p>
+                    </center>
+                </div>
             </div>
-            <div class = "divInformazioni">
+
+            <div id = "scuola">
                 <center>
-                    <img class = "imgInformazioni" src = "img/Icona_Teschio.png">
-                    <div class = "txtTitoloInformazioni">SOPRAVIVVI</div>
-                    <div class = "txtParagrafoInformazioni">Attento ai bidelli che<br>ti possono colpire con<br>le loro aspirafantasmi</div>
+                    <h1 id = "titoloScuola">Esplora la nostra scuola...</h1>
+                    <p id = "paragrafoScuola" >Scopri MISTERI e ENIGMI che nasconde l'ITIS Rivoira<br>Risolvili per superare l'esame e riportare in vita il tuo corpo</p>
+                    <img id = "scuolaDenina" src = "img/Altro/Scuola_Denina.jpg">
                 </center>
             </div>
-            <div class = "divInformazioni">
+
+            <div id = "gameplay">
                 <center>
-                    <img class = "imgInformazioni" src = "img/Icona_Cappello_Diploma.png">
-                    <div class = "txtTitoloInformazioni">DIPLOMATI</div>
-                    <div class = "txtParagrafoInformazioni">Vinci il gioco risolvendo<br>tutti i rompicapo per<br>affrontare l'esame finale</div>
+                    <h1 id = "testoGameplay">GAMEPLAY</h1>
                 </center>
+                <div class = "contenitoreGameplay">
+                    <h1 id = "titoloGameplay1">COMPRA LE MERENDINE</h1>
+                    <p id = "paragrafoGameplay1">Puoi comprare le merendine alle macchinette che trovi<br>all'interno della scuola, le merendine ti permettono di<br>sabottare i professori facendoti dare dei consigli</p>
+                    <img id = "sfondoGameplay1" src = "img/Sfondi/Sfondo_Stanza_1.png">
+                </div>
+
+                <div class = "contenitoreGameplay">
+                    <h1 id = "titoloGameplay2">NUOVE FANTASTICHE AULE</h1>
+                    <p id = "paragrafoGameplay2">All'interno della scuola potrai accedere a aule che non<br>sono solamente la tua classe, ma bensì, laboratori di<br>chimica e fisica, ufficio del presidente e molte altre...</p>
+                    <img id = "sfondoGameplay1" src = "img/Sfondi/Sfondo_Stanza_2.png">
+                </div>
+                <div class = "contenitoreGameplay">
+                    <h1 id = "titoloGameplay3">RISOLVI GLI ENIGMI</h1>
+                    <p id = "paragrafoGameplay3">Trova e risolvi gli enigmi sparsi nella scuola,<br>una volta finiti di risolvere tutti e ottenuto la chiave<br>per accedere all'esame finale, hai vinto la partita!</p>
+                    <img id = "sfondoGameplay3" src = "img/Sfondi/Sfondo_Stanza_3.png">
+                </div>
             </div>
-            <div id = "divScuola">
+
+            <div id = "personaggi">
                 <center>
-                    <div id = "txtTitoloScuola">Esplora la nostra scuola...</div>
-                    <div class = "txtSottotitoloScuola">Scropri misteri e enigmi che nasconde l'ITIS Rivoira</div>
-                    <div class = "txtSottotitoloScuola">Risolvili per superare l'esame e riportare in vita il tuo corpo</div>
-                    <img id = "imgScuolaDenina" src = "img/Scuola_Denina.jpg">
+                    <h1 id = "testoPersonaggi">PERSONAGGI</h1>
                 </center>
-            </div>
-        </div>
-        <div id = "gameplay">
-            <center>
-                <div id = "txtTitoloGameplay">GAMEPLAY<div>
-            </center>
-            <div id = "divGameplay">
-                <div id = "txtRiquadroGameplayTitolo1">COMPRA LE MERENDINE</div>
-                <div id = "divRiquardroGameplayLinea1"></div>
-                <div id = "txtRiquadroGameplayParagrafo1">
-                    Puoi comprare le merendine alle macchinette che trovi<br>
-                    all'interno della scuola, le merendine ti permettono di<br>
-                    sabottare i professori facendoti dare dei consigli per<br>
-                    gli enigmi.
+                <div class = "contenitorePersonaggi">
+                    <center>
+                        <img class = "immaginePersonaggi" src = "img/Personaggi/Soul.png">
+                        <h1 class = "titoloPersonaggi">SOUL</h1>
+                        <p class = "paragrafoPersonaggi">Il protagonista del gioco è l'anima<br> di uno studente della 5C che deve<br>superare le prove per superare l'esame</p>
+                    </center>
                 </div>
-                <img class = "divRiquadroGameplay" src = "img/Sfondo_Stanza_1.png">
-            </div>
-            <div id = "divGameplay">
-                <div id = "txtRiquadroGameplayTitolo2">NUOVE FANTASTICHE AULE</div>
-                <div id = "divRiquardroGameplayLinea2"></div>
-                <div id = "txtRiquadroGameplayParagrafo2">
-                    All'interno della scuola potrai accedere a aule che non<br>
-                    sono solamente la tua classe, ma bensì, laboratori di<br>
-                    chimica e fisica, ufficcio del presidente e molte altre...<br>
+                <div class = "contenitorePersonaggi">
+                    <center>
+                        <img class = "immaginePersonaggi" src = "img/Personaggi/Professori.png">
+                        <h1 class = "titoloPersonaggi">PROFESSORI</h1>
+                        <p class = "paragrafoPersonaggi">Possono aiutarti a risolvere gli enigmi<br>all'interno della scuola, corrompendoli<br>con delle merendine che trovi nelle aule</p>
+                    </center>
                 </div>
-                <img class = "divRiquadroGameplay" src = "img/Sfondo_Stanza_2.png">
-            </div>
-            <div id = "divGameplay">
-                <div id = "txtRiquadroGameplayTitolo3">RISOLVI GLI ENIGMI</div>
-                <div id = "divRiquardroGameplayLinea3"></div>
-                <div id = "txtRiquadroGameplayParagrafo3">
-                    Trova e risolvi gli enigmi sparsi nella scuola,<br>
-                    una volta finiti di risolvere tutti e ottenuto la chiave<br>
-                    per accedere all'esame finale, hai vinto la partita!<br>
+                <div class = "contenitorePersonaggi">
+                    <center>
+                        <img class = "immaginePersonaggi" src = "img/Personaggi/Bidelli.png">
+                        <h1 class = "titoloPersonaggi">BIDELLI</h1>
+                        <p class = "paragrafoPersonaggi">Attento a non farti catturare dai bidelli<br>che passeggiano per la scuola che quando<br>finiscono le vite, la tua partita è persa</p>
+                    </center>
                 </div>
-                <img class = "divRiquadroGameplay" src = "img/Sfondo_Stanza_3.png">
             </div>
-        </div>
-        <div id = "personaggi">
-            <center>
-                <div id = "txtTitoloPersonaggi">PERSONAGGI<div>
-            </center>
-            <div class = "divPersonaggi">
+            
+            <div id = "iLNostroTeam">
                 <center>
-                    <img class = "imgPersonaggi" src = "img/Soul.png">
-                    <div class = "txtTitoloPersonaggi">SOUL</div>
-                    <div class = "txtParagrafoPersonaggi">
-                        Il protagonista del gioco è<br>
-                        l'anima di uno studente della<br>
-                        5C che vdeve superare le prove<br>
-                        per superare l'esame.
+                    <h1 id = "testoIlNostroTeam">IL NOSTRO TEAM</h1>
+                </center>
+                <div class = "contenitoreIlNostroTeam">
+                    <center>
+                        <img class = "immagineIlNostroTeam" src = "img/Team/Alberto_Boaglio.png">
+                        <p class = "paragrafoIlNostroTeam">ALBERTO BOAGLIO</p>
+                    </center>
+                </div>
+                <div class = "contenitoreIlNostroTeam">
+                    <center>
+                        <img class = "immagineIlNostroTeam" src = "img/Team/Lorenzo_Ferrato.png">
+                        <p class = "paragrafoIlNostroTeam">LORENZO FERRATO</p>
+                    </center>
+                </div>
+                <div class = "contenitoreIlNostroTeam">
+                    <center>
+                        <img class = "immagineIlNostroTeam" src = "img/Team/Sara_Roasio.png">
+                        <p class = "paragrafoIlNostroTeam">SARA ROASIO</p>
+                    </center>
+                </div>
+                <div class = "contenitoreIlNostroTeam">
+                    <center>
+                        <img class = "immagineIlNostroTeam" src = "img/Team/Simone_Maisani.png">
+                        <p class = "paragrafoIlNostroTeam">SIMONE MAISANI</p>
+                    </center>
+                </div>
+            </div>
+
+            <div id = "contattaci">
+                <center>
+                    <h1 id = "testoContattaci">CONTATTACI</h1>
+                </center>
+                <div id = "contenitoreContattaci">
+                    <div id = "informazioniContattaci">
+                        <h1 id = "titoloContattaci">Hai bisogno di aiuto?</h1>
+                        <p id = "paragrafoContattaci">
+                        Puoi contattare l'assistenza per ricevere maggiori informazioni sugli eventuali problemi che hai riscontrato durante l'esperienza sul nostro sito o nel videogioco a qualunque ora del giorno il nostro servizio è aperto 24/7.. 
+                        Siamo a tua disposizione per garantirti il miglior servizio possibile!
+                        </p>
                     </div>
-                </center>
-            </div>
-            <div class = "divPersonaggi">
-                <center>
-                    <img class = "imgPersonaggi" src = "img/Soul.png">
-                    <div class = "txtTitoloPersonaggi">PROFESSORI</div>
-                    <div class = "txtParagrafoPersonaggi">
-                        Possono aiutarti a risolvere gli enigmi<br>
-                        all'interno della scuola, corrompendoli<br>
-                        con delle merendine che trovi nelle aule.
-                    </div>
-                </center>
-            </div>
-            <div class = "divPersonaggi">
-                <center>
-                    <img class = "imgPersonaggi" src = "img/Soul.png">
-                    <div class = "txtTitoloPersonaggi">BIDELLI</div>
-                    <div class = "txtParagrafoPersonaggi">
-                        Attento a non farti catturare dai<br>
-                        bidelli che quando finiscono le vite,<br>
-                        la tua partita è persa.
-                    </div>
-                </center>
-            </div>
-        </div>
-        <div id = "ilNostroTeam">
-            <center>
-                <div id = "txtTitoloIlNostroTeam">IL NOSTRO TEAM<div>
-            </center>
-            <div class = "divIlNostroTeam">
-                <center>
-                    <img class = "imgIlNostroTeam" src = "img/Simone_Maisani.jpg">
-                    <div class = "txtTitoloIlNostroTeam">SIMONE MAISANI</div>
-                </center>
-            </div>
-            <div class = "divIlNostroTeam">
-                <center>
-                    <img class = "imgIlNostroTeam" src = "img/Alberto_Boaglio.jpg">
-                    <div class = "txtTitoloIlNostroTeam">ALBERTO BOAGLIO</div>
-                </center>
-            </div>
-            <div class = "divIlNostroTeam">
-                <center>
-                    <img class = "imgIlNostroTeam" src = "img/Sara_Roasio.PNG">
-                    <div class = "txtTitoloIlNostroTeam">SARA ROASIO</div>
-                </center>
-            </div>
-            <div class = "divIlNostroTeam">
-                <center>
-                    <img class = "imgIlNostroTeam" src = "img/Lorenzo_Ferrato.jpg">
-                    <div class = "txtTitoloIlNostroTeam">LORENZO FERRATO</div>
-                </center>
-            </div>
-        </div>
-        <div id = "contatti">
-            <center>
-                <div id = "txtTitoloContatti">CONTATTACI<div>
-            </center>
-            <form>
-                <div id = "divNome">
-                    <div id = "txtNome">Nome</div>
-                    <input id = "inpTestoNome" type = "text">
+                    <form id = "moduloContattaci">
+                        <center>
+                            <div id = "nome">
+                                <p class = "testo">Nome</p>
+                                <input id = "riquadroNome" type = "text">
+                            </div>
+                            <div id = "cognome">
+                                <p class = "testo">Cognome</p>
+                                <input id = "riquadroCognome" type = "text">
+                            </div>
+                            <div id = "email">
+                                <p class = "testo">Email</p>
+                                <input id = "riquadroEmail" type = "text">
+                            </div>
+                            <div id = "motivo">
+                                <p class = "testo">Motivo</p>
+                                <input id = "riquadroMotivo" type = "text">
+                            </div>
+                            <br><br>
+                            <input id = "bottoneInvia" type = "submit" value = "INVIA">
+                        </center>
+                    </form>
                 </div>
-                <div id = "divCognome">
-                    <div id = "txtCognome">Cognome</div>
-                    <input id = "inpTestoCognome" type = "text">
+            </div>
+
+            <div id = "footer">
+                <center>
+                <img id = "logoDenina" src = "img/Loghi/Logo_Denina.png">
+
+                <div id = "socialMedia">
+                    <img id = "iconaSocialMedia" src = "img/Icone/Icona_Instagram.png">
+                    <img id = "iconaSocialMedia" src = "img/Icone/Icona_GitHub.png">
+                    <img id = "iconaSocialMedia" src = "img/Icone/Icona_Youtube.png">
                 </div>
-                <div id = "divEmail">
-                    <div id = "txtEmail">Email</div>
-                    <input id = "inpTestoEmail" type = "text">
-                </div>
-                <div id = "divMotivo">
-                    <div id = "txtEmail">Motivo</div>
-                    <input id = "inpTestoMotivo" type = "text">
-                </div>
-                <br><br>
-                <input id = "inpBottoneInvia" type = "submit" value = "INVIA">
-            </form>
-        </div>
-        <div id = "footer">
-            <center>
-                <img id = "imgLogoDenina" src = "img/Logo_Denina.png">
-                <div id = "txtFooterIstitutoDenina">ISS DENINA PELLICO RIVOIRA</div>
-                <div id = "txtFooterCopyright">© Copyright 2022, SoulEnigmista. All Rights Reserved.</div>
-            </center>
+
+                <p id = "paragrafoFooter">Created By Soul'Enigmista | © 2022 All rights reserved.</p>
+                </center>
+            </div>
+
         </div>
     </body>
 </html>

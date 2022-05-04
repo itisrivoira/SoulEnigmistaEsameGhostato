@@ -1,0 +1,1560 @@
+@media screen and (max-width: 1440px) {
+
+    /* --- NAVBAR --- */
+
+    #logoSoulEnigmista {
+        width: 200px;
+    }
+    
+    #home {
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 100px;
+
+        font-size: 20px;
+    }
+
+    #about_us {
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 200px;
+
+        font-size: 20px;
+    }
+
+    #contacts {
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 320px;
+
+        font-size: 20px;
+    }
+    
+    /* -------------- */
+
+    /* --- INFORMAZIONI --- */
+
+    .contenitoreInformazioni {
+        margin-left: 50px;
+    }
+
+    /* -------------- */
+    
+    /* --- GAMEPLAY --- */
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 44%;
+        margin-top: 130px;
+    
+        font-size: 50px;
+        width: 630px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 46%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 25px;
+        text-align: right;
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 25px;
+        text-align: left;
+    }
+    
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 50px;
+        width: 700px;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 50%;
+        margin-top: 130px;
+    
+        font-size: 50px;
+        width: 550px;
+
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 44%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 25px;
+        color: white;
+        text-align: right;
+    }
+
+    /* -------------- */
+ 
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 0px;
+    }
+    
+    .contenitorePersonaggi {
+        margin-top: 50px;
+        margin-left: 2%;
+
+        width: 30%;
+        height: 450px;
+    }
+    
+    .immaginePersonaggi {
+        width: 200px;
+    }
+    
+    .titoloPersonaggi {
+        font-size: 40px;
+        width: 100%;
+    }
+    
+    .paragrafoPersonaggi {
+        font-size: 16px;
+    }
+    
+    /* -------------- */
+    
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        position: absolute;
+        top: 4050px;
+        left: 0px;
+        margin-top: 50px;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 200px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: inline-block;
+        margin-top: 50px;
+        margin-left: 2%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        font-size: 24px;
+    }
+    
+    /* -------------- */
+    
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */
+
+}
+
+@media screen and (max-width: 1200px) {
+
+    /* --- HOME PAGE --- */
+
+    #titoloHome {
+        font-size: 80px;
+        margin-top: 220px;
+    }
+
+    /* -------------- */
+
+    /* --- INFORMAZIONI --- */
+
+    .contenitoreInformazioni {
+        margin-left: 50px;
+    }
+
+    /* -------------- */
+    
+    /* --- GAMEPLAY --- */
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 38%;
+        margin-top: 130px;
+    
+        font-size: 50px;
+        width: 630px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 40%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 25px;
+        text-align: right;
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 25px;
+        text-align: left;
+    }
+    
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 50px;
+        width: 700px;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 46%;
+        margin-top: 130px;
+    
+        font-size: 50px;
+        width: 550px;
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 39%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 25px;
+    }
+
+    /* -------------- */
+    
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 0px;
+    }
+    
+    .contenitorePersonaggi {
+        margin-top: 50px;
+        margin-left: 5%;
+
+        width: 25%;
+        height: 500px;
+    }
+    
+    .immaginePersonaggi {
+        width: 200px;
+    }
+    
+    .titoloPersonaggi {
+        font-size: 40px;
+        width: 100%;
+    }
+    
+    .paragrafoPersonaggi {
+        width: 100%;
+        font-size: 15px;
+    }
+    
+    /* -------------- */
+    
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        position: absolute;
+        top: 4050px;
+        left: 0px;
+        margin-top: 50px;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 200px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: inline-block;
+        margin-top: 50px;
+        margin-left: 2%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        font-size: 24px;
+    }
+    
+    /* -------------- */
+        
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */       
+    
+}
+
+@media screen and (max-width: 1050px) {
+
+    /* --- HOME PAGE --- */
+
+    #titoloHome {
+        font-size: 65px;
+        margin-top: 250px;
+    }
+
+    #sottotitoloHome {
+        margin-left: 100px;
+        font-size: 20px;
+    }
+
+    #home, #about_us, #contacts, #login {
+        display: none;
+    }
+
+    /* -------------- */ 
+
+    .contenitoreInformazioni {
+        margin-left: 50px;
+    }
+
+    /* -------------- */
+    
+    /* --- GAMEPLAY --- */
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 34%;
+        margin-top: 130px;
+    
+        font-size: 42px;
+        width: 530px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 25%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 20px;
+        text-align: right;
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 20px;
+        text-align: left;
+    }
+    
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 42px;
+        width: 700px;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 38%;
+        margin-top: 130px;
+    
+        font-size: 42px;
+        width: 460px;
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 20%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 20px;
+    } 
+
+    /* -------------- */
+    
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 0px;
+    }
+    
+    .contenitorePersonaggi {
+        margin-top: 50px;
+        margin-left: 2%;
+
+        width: 30%;
+        height: 450px;
+    }
+    
+    .immaginePersonaggi {
+        width: 200px;
+    }
+    
+    .titoloPersonaggi {
+        font-size: 38px;
+        width: 100%;
+    }
+    
+    .paragrafoPersonaggi {
+        font-size: 14px;
+    }
+    
+    /* -------------- */
+    
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        position: absolute;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 170px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: inline-block;
+        margin-top: 50px;
+        margin-left: 2%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        font-size: 20px;
+    }
+    
+    /* -------------- */
+    
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */          
+
+}
+
+@media screen and (max-width: 900px) {
+
+    /* --- HOME PAGE --- */
+
+    #titoloHome {
+        font-size: 60px;
+        height: 80%;
+        margin-top: 260px;
+    }
+
+    #sottotitoloHome {
+        margin-left: 100px;
+        font-size: 20px;
+    }
+
+    /* -------------- */    
+
+    /* --- INFORMAZIONI --- */
+
+    .contenitoreInformazioni {
+        margin-left: 50px;
+    }
+
+    .paragrafoInformazioni {
+        position: absolute;
+        margin-right: 50px;
+        margin-left: 0px;
+
+        width: 200px;
+        font-size: 20px;
+    }
+
+    /* -------------- */
+
+    /* --- SCUOLA --- */
+
+    #scuola {
+        margin-top: 100px;
+    }
+
+    #titoloScuola {
+        margin-top: 30px;
+    
+        height: 30px;
+        width: 780px;
+        color: white;
+        font-size: 70px;
+    }
+
+    #paragrafoScuola {
+        color: white;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #scuolaDenina {
+        height: 400px;
+        width: 640px;
+        border: 5px solid #FFD200;
+    }
+
+    /* -------------- */
+    
+    /* --- GAMEPLAY --- */
+
+    #gameplay {
+        margin-top: 100px;
+    }
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 36%;
+        margin-top: 130px;
+    
+        font-size: 40px;
+        width: 510px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 24%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 20px;
+        text-align: right;
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 20px;
+        text-align: left;
+    }
+    
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 40px;
+        width: 600px;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 42%;
+        margin-top: 130px;
+    
+        font-size: 40px;
+        width: 440px;
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 20%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 20px; 
+    } 
+
+    /* -------------- */
+    
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 100px;
+        display: block;
+    }
+
+    .contenitorePersonaggi {
+        display: block;
+        margin-top: 50px;
+        margin-left: 28%;
+
+        width: 350px;
+        height: 500px;
+    }
+
+    .immaginePersonaggi {
+        width: 250px;
+    }
+
+    .titoloPersonaggi {
+        font-size: 48px;
+        width: 100%;
+    }
+
+    .paragrafoPersonaggi {
+        font-size: 20px;
+    }
+
+    /* -------------- */
+    
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        display: block;
+        margin-top: 1200px;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 200px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: block;
+        margin-top: 50px;
+        margin-left: 39%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        margin-left: 10%;
+
+        font-size: 24px;
+    }
+    
+    /* -------------- */
+    
+    /* --- CONTATTACI --- */
+
+    #contattaci {
+        display: block;
+        margin-top: 2100px;
+
+        height: 800px;
+    }
+
+    #informazioniContattaci {
+        position: absolute;
+        display: block;
+
+        width: 96%;
+    }
+    
+    #moduloContattaci {
+        position: absolute;
+        display: block;
+        margin-left: 2%;
+        margin-top: 300px;
+
+        width: 96%;
+    }
+    
+    /* -------------- */
+    
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+        margin-top: 3200px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */         
+
+}
+
+@media screen and (max-width: 885px) {
+
+    /* --- INFORMAZIONI --- */
+
+    .contenitoreInformazioni {
+        margin-top: 50px;
+        margin-left: 300px;
+        display: block;
+    }
+
+    /* -------------- */     
+
+    /* --- SCUOLA --- */
+
+    #scuola {
+        margin-top: 890px;
+    }
+
+    #titoloScuola {
+        margin-top: 20px;
+    
+        height: 30px;
+        width: 700px;
+        color: white;
+        font-size: 60px;
+    }
+
+    #paragrafoScuola {
+        color: white;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    #scuolaDenina {
+        height: 350px;
+        width: 540px;
+        border: 5px solid #FFD200;
+    }
+
+    /* -------------- */
+    
+    /* --- GAMEPLAY --- */
+    
+    #gameplay {
+        margin-top: 780px;
+    }
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 29%;
+        margin-top: 130px;
+    
+        font-size: 38px;
+        width: 480px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 26%;
+        margin-top: 200px;
+    
+        width: 500px;
+        font-size: 18px;
+        text-align: right;
+    }
+
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 38px;
+        width: 600px;
+        
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 40%;
+        margin-top: 130px;
+    
+        font-size: 38px;
+        width: 410px;
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 10%;
+        margin-top: 200px;
+    
+        width: 600px;
+        font-size: 18px;
+        
+    } 
+
+    /* -------------- */
+    
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 780px;
+        display: block;
+    }
+
+    .contenitorePersonaggi {
+        display: block;
+        margin-top: 50px;
+        margin-left: 28%;
+
+        width: 350px;
+        height: 500px;
+    }
+
+    .immaginePersonaggi {
+        width: 250px;
+    }
+
+    .titoloPersonaggi {
+        font-size: 48px;
+        width: 100%;
+    }
+
+    .paragrafoPersonaggi {
+        font-size: 20px;
+    }
+
+    /* -------------- */
+    
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        display: block;
+        margin-top: 1900px;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 200px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: block;
+        margin-top: 50px;
+        margin-left: 39%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        margin-left: 10%;
+
+        font-size: 24px;
+    }
+    
+    /* -------------- */ 
+    
+    /* --- CONTATTACI --- */
+
+    #contattaci {
+        display: block;
+        margin-top: 2800px;
+
+        height: 800px;
+    }
+
+    #informazioniContattaci {
+        position: absolute;
+        display: block;
+
+        width: 96%;
+    }
+    
+    #moduloContattaci {
+        position: absolute;
+        display: block;
+        margin-left: 2%;
+        margin-top: 300px;
+
+        width: 96%;
+    }
+    
+    /* -------------- */
+    
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+        margin-top: 3200px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */      
+
+}
+
+@media screen and (max-width: 720px) {
+
+    /* --- NAVBAR --- */
+
+    #logoSoulEnigmista {
+        width: 200px;
+    }
+
+    #home, #about_us, #contacts, #login {
+        display: none;
+    }
+    
+    /* -------------- */
+
+    /* --- HOME PAGE --- */
+
+    #titoloHome {
+        font-size: 65px;
+        height: 50%;
+        margin-top: 200px;
+    }
+
+    #sottotitoloHome {
+        font-size: 16px;
+        margin-top: 430px;
+    }
+
+    /* -------------- */ 
+    
+    /* --- INFORMAZIONI --- */
+
+    .contenitoreInformazioni {
+        margin-top: 50px;
+        margin-left: 200px;
+        display: block;
+    }
+
+    .iconeInformazioni {
+        margin-left: 60px;
+    }
+
+    .titoloInformazioni {
+        margin-left: 20px;
+        width: 200px;
+    }
+
+    .paragrafoInformazioni {
+
+        width: 250px;
+        font-size: 20px;
+    }
+
+    /* -------------- */
+    
+    /* --- SCUOLA --- */
+
+    #scuola {
+        margin-top: 890px;
+    }
+
+    #titoloScuola {
+        margin-top: 20px;
+    
+        height: 100px;
+        width: 500px;
+        color: white;
+        font-size: 60px;
+    }
+
+    #paragrafoScuola {
+        color: white;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #scuolaDenina {
+        height: 300px;
+        width: 440px;
+        border: 5px solid #FFD200;
+    }
+
+    /* -------------- */        
+
+    /* --- GAMEPLAY --- */
+
+    #gameplay {
+        margin-top: 700px;
+    }
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 27%;
+        margin-top: 130px;
+    
+        font-size: 30px;
+        width: 380px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 23%;
+        margin-top: 200px;
+    
+        width: 400px;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 30px;
+        width: 450px;
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 200px;
+    
+        width: 450px;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 36%;
+        margin-top: 130px;
+    
+        font-size: 30px;
+        width: 330px;
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 20%;
+        margin-top: 200px;
+    
+        width: 400px;
+        font-size: 14px;
+    } 
+
+    /* -------------- */ 
+    
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 700px;
+        display: block;
+    }
+
+    .contenitorePersonaggi {
+        display: block;
+        margin-top: 50px;
+        margin-left: 22%;
+
+        width: 350px;
+        height: 500px;
+    }
+
+    .immaginePersonaggi {
+        width: 250px;
+    }
+
+    .titoloPersonaggi {
+        font-size: 48px;
+        width: 100%;
+    }
+
+    .paragrafoPersonaggi {
+        font-size: 20px;
+    }
+
+    /* -------------- */
+    
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        display: block;
+        margin-top: 1900px;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 200px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: block;
+        margin-top: 50px;
+        margin-left: 33%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        margin-left: 8%;
+
+        width: 200px;
+        font-size: 24px;
+    }
+    
+    /* -------------- */ 
+
+        
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+        margin-top: 3200px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */  
+
+}
+
+@media screen and (max-width: 550px) {
+
+    /* --- NAVBAR --- */
+
+    #logoSoulEnigmista {
+        width: 200px;
+    }
+
+    #home, #about_us, #contacts, #login {
+        display: none;
+    }
+    
+    /* -------------- */
+
+    /* --- HOME PAGE --- */
+
+    #titoloHome {
+        height: 80%;
+        font-size: 58px;
+        margin-top: 210px;
+    }
+
+    #sottotitoloHome {
+        font-size: 12px;
+        margin-top: 430px;
+    }
+
+    /* -------------- */ 
+    
+    /* --- INFORMAZIONI --- */
+
+    .contenitoreInformazioni {
+        margin-top: 100px;
+        margin-left: 150px;
+        display: block;
+    }
+
+    .titoloInformazioni {
+        margin-left: 0px;
+    }
+
+    .iconeInformazioni {
+        margin-left: 35px;
+    }
+
+    .paragrafoInformazioni {
+        width: 200px;
+    }
+
+    /* -------------- */
+    
+    /* --- SCUOLA --- */
+
+    #scuola {
+        margin-top: 890px;
+    }
+
+    #titoloScuola {
+        margin-top: 100px;
+    
+        height: 30px;
+        width: 450px;
+        color: white;
+        font-size: 40px;
+    }
+
+    #paragrafoScuola {
+        color: white;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #scuolaDenina {
+        height: 300px;
+        width: 440px;
+        border: 5px solid #FFD200;
+    }
+
+    /* -------------- */
+    
+    /* --- GAMEPLAY --- */
+
+    #gameplay {
+        margin-top: 700px;
+    }
+
+    #titoloGameplay1 {
+        position: absolute;
+        margin-left: 45%;
+        margin-top: 130px;
+        
+        width: 250px;
+        font-size: 20px;
+    }
+    
+    #paragrafoGameplay1 {
+        position: absolute;
+        margin-left: 35%;
+        margin-top: 170px;
+    
+        width: 300px;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    #titoloGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 130px;
+    
+        font-size: 20px;
+        width: 300px;
+    }
+
+    #paragrafoGameplay2 {
+        position: absolute;
+        margin-left: 9%;
+        margin-top: 170px;
+    
+        width: 300px;
+        font-size: 12px;
+        text-align: left;
+    }
+
+    #titoloGameplay3 {
+        position: absolute;
+        margin-left: 50%;
+        margin-top: 130px;
+    
+        font-size: 20px;
+        width: 210px;
+    }
+    
+    #paragrafoGameplay3 {
+        position: absolute;
+        margin-left: 33%;
+        margin-top: 170px;
+    
+        width: 300px;
+        font-size: 14px;
+    } 
+
+    /* -------------- */        
+
+    /* --- PERSONAGGI --- */
+
+    #personaggi {
+        margin-top: 700px;
+        display: block;
+    }
+
+    .contenitorePersonaggi {
+        display: block;
+        margin-top: 50px;
+        margin-left: 15%;
+
+        width: 350px;
+        height: 500px;
+    }
+
+    .immaginePersonaggi {
+        width: 250px;
+    }
+
+    .titoloPersonaggi {
+        font-size: 48px;
+        width: 100%;
+    }
+
+    .paragrafoPersonaggi {
+        font-size: 20px;
+    }
+
+    /* -------------- */
+
+    /* --- IL NOSTRO TEAM --- */
+
+    #ilNostroTeam {
+        display: block;
+        margin-top: 1900px;
+    
+        height: 500px;
+        width: 100%;
+    }
+    
+    #testoIlNostroTeam {
+        font-size: 48px;
+    }
+    
+    .immagineIlNostroTeam {
+        border-radius: 500px;
+        width: 200px;
+    }
+    
+    .contenitoreIlNostroTeam {
+        display: block;
+        margin-top: 50px;
+        margin-left: 30%;
+    
+        width: 22%;
+    }
+    
+    .paragrafoIlNostroTeam {
+        width: 200px;
+        font-size: 24px;
+    }
+    
+    /* -------------- */
+    
+        
+    /* --- FOOTER --- */
+
+    #footer {
+        position: absolute;
+        top: 5250px;
+        left: 0px;
+        margin-top: 3200px;
+
+        height: 250px;
+        width: 100%;
+        background-color: #53C9D7;
+    }
+
+    #logoDenina {
+        width: 120px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    #socialMedia {
+        margin-top: 10px;
+    }
+
+    #iconaSocialMedia {
+        width: 30px;
+        margin-left: 40px;
+    }
+
+    #paragrafoFooter {
+        color: white;
+        margin-left: 30px;
+    }
+
+    /* -------------- */  
+
+}
