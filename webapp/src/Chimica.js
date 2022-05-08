@@ -3,7 +3,7 @@ import './Chimica.css';
 
 const Chimica = () => {
   return (
-    <div id='schermataChim'>
+    <div id='schermataChim' class="classe">
         <div class="casella" id="partenzaChim" ></div>   
         <div class="casella" id="banconeChim1" ></div>  
         <div class="casella" id="banconeChim2" ></div>  

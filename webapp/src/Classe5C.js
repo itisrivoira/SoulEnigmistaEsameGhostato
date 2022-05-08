@@ -6,7 +6,7 @@ import './Classe5C.css';
 
 const Classe5C = () => { 
     return (
-        <div id='schermata'>
+        <div id='schermata' class="classe">
           <div class="casella" id="porta5C"  ></div>
           <div class="casella" id="lavagna"></div>
           <div class="casella" id="computer"></div>

@@ -1,7 +1,6 @@
 
 import pygame,sys
 pygame.init() 
-
 FPS=60
 clock = pygame.time.Clock()
 clock.tick(FPS)
@@ -28,6 +27,9 @@ flag=0
 
 global mostraOgg
 mostraOgg=[]
+
+global strumenti
+strumenti=[]
 
 global mostraZaino
 mostraZaino=nulla
@@ -63,11 +65,12 @@ cattedra=pygame.image.load("img/cattedra.jpg").convert_alpha()
 corridoio=pygame.image.load("img/corridoio.png").convert_alpha()
 porta=pygame.image.load("img/porta.png").convert_alpha()
 schermataArm=pygame.image.load("img/armadioApertoVuoto.png").convert()
-acqua=pygame.image.load("img/acqua.jpg").convert()
+acqua=pygame.image.load("img/acqua.jpg").convert_alpha()
+so3=pygame.image.load("img/so3.jpeg").convert_alpha()
+acido=pygame.image.load("img/acido.jpg").convert_alpha()
 logo=pygame.transform.smoothscale(logo, (772, 222))
 zaino=pygame.transform.smoothscale(classe5C, (200, 200))
 bancoChimica=pygame.image.load("img/Banco2.png").convert_alpha()
-
 
 pygame.display.set_icon(icona)
 pygame.display.set_caption("SOUL'ENIGMISTA")
@@ -91,12 +94,15 @@ class Oggetto:
         SCREEN.blit(self.img,(self.x,self.y))
 
 class Strumento:
-    def __init__(self,img="",x=0,y=0,width=0,heigth=0):
+    def __init__(self,nome="",img="",x=0,y=0,width=0,heigth=0):
         self.img=img
         self.x=x
         self.y=y     
         self.x2=x+width
         self.y2=y+heigth
+        self.nome=nome
+        strumenti.append(self)
+
     def mostraOgg(self):
         SCREEN.blit(self.img,(self.x,self.y))
 
@@ -201,16 +207,16 @@ class Soul:
         self.direzione=""
 
     def vaiSu(self):
-        self.vely-=1
+        self.vely-=5
 
     def vaiGiu(self):
-        self.vely+=1
+        self.vely+=5
 
     def vaiDx(self):
-        self.velx+=1
+        self.velx+=5
 
     def vaiSx(self):
-        self.velx-=1
+        self.velx-=5
 
     def ferma(self):
         self.vely=0
@@ -237,8 +243,12 @@ def apriZaino():
     i=0
     SCREEN.blit(zaino,(0,0))
     for obj in Bag:
-        SCREEN.blit(obj.img,(850+(i%7)*32,800+int(i/7)))
+        obj.x=i*50
+        print(i)
+        obj.y=0
+        obj.mostraOgg()
         i=i+1
+        
 
 def  alza():
     pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()+0.100)
@@ -268,9 +278,15 @@ def funz_mostraZaino():
             mostraZaino=apriZaino
 
 
-def aggOggSch(oggetto,assegna):
+def aggOggSch(oggetti,assegna):
     assegna()
-    mostraOgg.append(oggetto)
+    flag=0
+    for oggetto in oggetti:
+        for obj in Bag:
+                if oggetto.nome==obj.nome:
+                    flag=1
+        if flag==0:
+            mostraOgg.append(oggetto)
 
 
 def cambiaStanza(stanza,xSoul,ySoul):
@@ -316,10 +332,12 @@ Oggetto("5C",porta,32,32,200,96,lambda: cambiaStanza(stzCorridoio,896,128))
 Oggetto("corridoio",porta,32,128,928,96,lambda: cambiaStanza(stz5c,232,96))
 Oggetto("corridoio",porta,64,32,160,64,lambda: cambiaStanza(stzChimica,768,556))
 
-strAcqua=Strumento(acqua,500,200,32,32)
+strAcqua=Strumento("acqua",acqua,500,200,32,32)
+strSo3=Strumento("so3",so3,600,200,32,32)
 Oggetto("Chimica",porta,64,32,746,588,lambda: cambiaStanza(stzCorridoio,160,96))
-Oggetto("Chimica",armadio,32,64,320,32,lambda:aggOggSch(strAcqua,lambda: assegna(lambda:apriSchermata(schermataArm,246,120))))
+Oggetto("Chimica",armadio,32,64,320,32,lambda:aggOggSch([strAcqua,strSo3],lambda: assegna(lambda:apriSchermata(schermataArm,246,120))))
 Oggetto("Chimica",bancoChimica,129,97,320,150,lambda:assegna( lambda:apriSchermata(computer,246,120))) #modificare
+
 #creazione banchi
 xO=135
 yO=160
@@ -496,10 +514,10 @@ while run:
             
             if evento.type ==pygame.MOUSEBUTTONDOWN:
                 x,y=evento.pos
-                if x>strAcqua.x and x<strAcqua.x2 and y>strAcqua.y and y<strAcqua.y2:
-                    
-                    mostraOgg.remove(strAcqua)
-                    Bag.append(strAcqua)
+                for str in strumenti:
+                    if x>str.x and x<str.x2 and y>str.y and y<str.y2:
+                        mostraOgg.remove(str)
+                        Bag.append(str)
                     
                     
                     

@@ -7,7 +7,7 @@ const Corridoio = (pos) => {
    
     
     return (
-        <div id='schermataCor'>
+        <div id='schermataCor' class="classe">
             <div class="casella" id="portaCor" ></div>
             <div class="casella" id="partenzaCor" ></div>
 

@@ -15,7 +15,7 @@ import merendina from "./img/merendinapx.png"
 import acido from "./img/acido.jpg"
 import acqua from "./img/acqua.jpg"
 import chiave from "./img/chiave.jpg"
-
+import so3 from './img/so3.jpg'
 
 function App() {
   useEffect(() => {
@@ -27,7 +27,39 @@ function App() {
   const [Componente, setComponente] = useState("")
   const [Zaino,setZaino]=useState([])
   var zaino=Zaino
+  var oggetti={
+    acqua:acqua,
+    so3:so3,
+    chiave:chiave,
+    acido:acido
+  }
 
+  var classi={
+    schermata :Classe5C,
+    schermataCor:Corridoio,
+    schermataChim:Chimica
+  }
+  const caricaPartita=()=>{
+    fetch("http://127.0.0.1:3001/caricaPartita")
+    .then(response=>response.json())
+    .then(data=>{
+      data.zaino.map((value)=>{
+      
+        let obj=document.createElement("img")
+        obj.src=oggetti[value.id]
+        obj.id=value.id
+        obj.className="oggetto"
+        obj.style.width="32px"
+        obj.style.height="32px"
+        obj.style.margin=0
+        zaino.push(obj)
+        setZaino(zaino)
+      })
+      Cambia(classi[data.classe])
+      inserisci(data.posizione)
+      
+    })
+  }
   
   
   const Apri=(apri, chiudi)=> {
@@ -64,7 +96,6 @@ function App() {
   }, false);
 
   document.addEventListener("dragover", function(event) {
-    // Metto l'immagine di Soul in una variabile
     event.preventDefault()
   }, false);
   
@@ -96,6 +127,7 @@ function App() {
       trasportato.style.marginLeft="0px"
       trasportato.style.marginTop="0px"
     }else if (event.target.id == "Zaino") {
+      let flag=0
       if (trasportato.className=="oggetto") {
         event.target.style.background = "";
         trasportato.parentNode.removeChild( trasportato);
@@ -104,7 +136,16 @@ function App() {
         trasportato.style.height="32px"
         trasportato.style.margin=0
         zaino=Zaino
-        zaino.push(trasportato)
+        zaino.map((obj)=>{
+          
+          if(obj.id==trasportato.id){
+            flag=1
+          }
+        })
+        if (flag==0){
+          zaino.push(trasportato)
+          
+        }
         setZaino(zaino)
       }
       
@@ -140,9 +181,11 @@ function App() {
       }
       setZaino(zaino)
     }else if(event.target.id=="imgArmadioChimLock"){
-      zaino=Zaino
-      zaino.splice(0,1)
+      
       if(trasportato.id=="acido"){
+        zaino=Zaino
+        zaino.filter(obj=>obj.id==trasportato.id)
+        setZaino(zaino)
         if(trasportato.parentNode!=null){
           trasportato.parentNode.removeChild( trasportato );
         }
@@ -151,7 +194,7 @@ function App() {
         creaOggetto(chiave,"chiave",event.target)
         
       }
-      setZaino(zaino)
+      
       document.getElementById("armadioChimLock").id="armadioChimOpen"
     }else if(event.target.id=="imgArmadio5CLock"){
       if(trasportato.id=="chiave"){
@@ -159,7 +202,7 @@ function App() {
           trasportato.parentNode.removeChild( trasportato );
         }
         zaino=Zaino
-        zaino.splice(0,1)
+        zaino.filter(obj=>obj.id==trasportato.id)
         setZaino(zaino)
         event.target.id="imgArmadio5COpen"
         document.getElementById("armadio").id="armadio5COpen"
@@ -216,6 +259,7 @@ function App() {
 
   document.onkeyup=function(e) {
     var charCode = e.keyCode;
+
     var schermata=document.getElementById("schermata")
     var schermataChim=document.getElementById("schermataChim")
     //alert(charCode)
@@ -278,8 +322,8 @@ function App() {
             armadio.id="imgArmadioChim"
             armadio.className="schermata2"
             schermataChim.appendChild(armadio)
-            creaOggetto(acqua,"merendina",armadio)
-            creaOggetto(merendina,"merendina2",armadio)
+            creaOggetto(acqua,"acqua",armadio)
+            creaOggetto(so3,"so3",armadio)
             }
           break;
           case "armadioChimLock":
@@ -321,8 +365,7 @@ function App() {
           alert(document.getElementById("soul").parentNode.id)
           break;
       }
-    }
-    if (charCode==37) {
+    }else if (charCode==37) {
       if(document.contains(document.getElementsByClassName("schermata2")[0])){
         var computer=document.getElementsByClassName("schermata2")[0]
         if(computer.contains(document.getElementsByClassName("schermata3")[0])){
@@ -337,8 +380,7 @@ function App() {
        
       }
      
-    }
-    if (charCode==77){
+    }else if (charCode==77){
       zaino=Zaino
       
       var finestra=document.getElementById("Contenitore")
@@ -350,17 +392,31 @@ function App() {
           console.log(zaino)
           finestra.appendChild(menuZaino)
           zaino.map((value)=>{
+            
             menuZaino.append(value)
           })
         }
       
-    }
-    if (charCode==79){
+    }else if (charCode==79){
       Apri("Option","Gioco")
       
-    }
-    if(charCode==72){
+    }else if(charCode==72){
       Apri("Home","Gioco") 
+    }else if(charCode==83){
+
+      let dati={
+        posizione:document.getElementById("soul").parentNode.id,
+        classe:document.getElementsByClassName("classe")[0].id,
+        zaino:[]
+    }
+      zaino.map((value)=>{
+        dati.zaino.push({id:value.id})
+      })
+      fetch("http://127.0.0.1:3001/salva",{
+        method:"POST",
+        headers:{'Content-Type':'application/json;charset=utf-8'},
+        body:JSON.stringify(dati)
+      }).then(response=>response.json()).then(data=>console.log(data))
     }
   }
   return (
@@ -371,6 +427,8 @@ function App() {
       <img class="logo" src={foto} width="80%" ></img>
         <div id="pulsanti">
           <input id='play' type="button" value="PLAY"  onClick={()=>Apri("Gioco","Home") }/>
+          <input id='play' type="button" value="Carica Partita"  onClick={()=>{Apri("Gioco","Home");caricaPartita() }}/>
+          
           <input class='option' type="button" value="OPTION"  onClick={()=>Apri("Option","Home") }/>
         </div>
       </div>
