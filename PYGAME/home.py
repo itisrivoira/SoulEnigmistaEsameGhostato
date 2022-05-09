@@ -51,8 +51,10 @@ SCREEN = pygame.display.set_mode((WIDTH,HEIGTH))
 #tutte le immagini da inizializzare
 icona = pygame.image.load('img/fantasmaPixel.png').convert_alpha()
 sfondo=pygame.image.load("img/sfondo.jpeg").convert()
+#inizializzatzione stanze
 classe5C=pygame.image.load("img/5C.jpg").convert()
 logo=pygame.image.load("img/logo.png").convert_alpha()
+#inizializzazione oggetti delle stanze
 computer=pygame.image.load("img/computer.jpg").convert_alpha()
 registro=pygame.image.load("img/registro.png").convert_alpha()
 appBlocc=pygame.image.load("img/appBlocc.png").convert_alpha()
@@ -124,11 +126,12 @@ class Stanza:
         self.y=y 
         self.width=width
         self.heigth=heigth
-        self.classe=classe
+        self.classe=classe #identificativo per capire in che stanza ci troviamo durante il gioco
         
 
     def draw(self):
         SCREEN.blit(self.img,(self.x,self.y))
+#assegno alle stanze la funzione Stanza
 
 stz5c=Stanza(classe5C,200,0,630,580,"5C")
 stzCorridoio=Stanza(corridoio,100,0,832,220,"corridoio")

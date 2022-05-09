@@ -1,0 +1,25 @@
+come aggiungere una stanza su pygame:
+-prendere l'immagine di sfondo e andarla a inizializzare dove sono inizializzate tutte le immagini:
+esempio: 
+  classe5C=pygame.image.load("img/5C.jpg").convert()
+  quindi vado a mettere il nome dell'immagine= pygame.image.load(persorso relativo).convert()
+    N.B. se l'immagine importata è jpeg o jpg dopo la chiusura della parentesi metto .convert() se inceve l'immagine è png metto .convert:alpha()
+
+le immagini vanno inizializzate in ordine perchè vengono messe una sopra l'altra a seconda della posizione di dove sono state inizalizzate (le stanze le inizalizzo dopo sfondo e i vari oggetti che devono stare nella stanza vanno inizalizzate dopo logo).pow
+
+Dopo devo andare ad assegnare alla stanza la funzione Stanza che permette di gestirla (attorno a riga 135) 
+   esempio: 
+    stz5c=Stanza(classe5C,200,0,630,580,"5C")
+    dove stz5c è una nuova "variabile" dove, tramite la funzione Stanza vado a passare (in ordine): il nome  con cui ho salvato l'immagine quando l'ho inizializzata prima, la x dove voglio posizionare l'immagine, e la y dove voglio posizionare l'immagine, la largezza del img, altezza img, identificativo per capire in che stanza mi ptrovo.
+        N.B. l'angolo di riferimento (0,0) è in alto a sinistra
+
+Successivamente (attorno alla riga 327) vado a istanziare i vari ogetti prt poter poi anche andare cambiare stanza.
+Tramite la funxione Oggetto (gira 80) vado a gestire le collisioni
+    esempio: (quando premo invio dall'oggetto lavagna mi deve aprire la schermata con la lavagna)
+        Oggetto("5C",lavagna,64,64,520,-5,lambda: assegna(lambda:apriSchermata(schermataLav,246,120)))
+        ad oggetto vado a passare in ordine: l'identificativo che ho assegnato prima alla stanza (ultimo paramentro passato quanod ho usato la funzione Stanza lla variabile precedente),
+        il nome dell'oggetto interessato (prima devo però inizalizzarlo sopra con tutti gli altre img),altezza, largezza, il valore della x, il valore della y,lamda(che serve per richiamare una fuxione): nome della funzione e passo i paramentri della funzione
+       FUNZIONI per gli oggetti:
+        per  andare ad aprire la schermata vado usare la funzunzione assegna(nome della schermata inizializzata all'inizio)
+
+        per cambiare stanza uso la funzione cambiaStanza(stanza in cui devo andare, x e y dove poi devo andare per cambaire stanza quando premo invio.PermissionError
