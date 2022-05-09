@@ -1,0 +1,58 @@
+[
+    {
+        "dom": "storia" ,  
+        "materia":"in che anno e' morto Francesco Ferdinando?" ,
+        "a":"1917",
+        "b":"1805",
+        "c":"1914",
+        "d": "1918",
+        "corretta": "d"
+    },
+    {
+        "domanda": "chi ha scritto il 'x Agosto?'" ,  
+        "materia":"italiano" ,
+        "a":"Verga",
+        "b":"D'Annunzio",
+        "c":"Pascoli",
+        "d": "Montale",
+        "corretta": "c"
+    },
+    {
+        "domanda": "Qual è l'integrale di 9x²? " ,  
+        "materia":"matematica" ,
+        "a":"18x",
+        "b":"-18x",
+        "c":"-x(3x)",
+        "d": "x(3x) ",
+        "corretta": "a"
+    },
+
+    {
+        "dom": "storia" ,  
+        "materia":"in che anno e' morto Francesco Ferdinando?" ,
+        "a":"1917",
+        "b":"1805",
+        "c":"1914",
+        "d": "1918",
+        "corretta": "d"
+    },
+    {
+        "domanda": "chi ha scritto il 'x Agosto?'" ,  
+        "materia":"italiano" ,
+        "a":"Verga",
+        "b":"D'Annunzio",
+        "c":"Pascoli",
+        "d": "Montale",
+        "corretta": "c"
+    },
+    {
+        "domanda": "Qual è l'integrale di 9x²? " ,  
+        "materia":"matematica" ,
+        "a":"18x",
+        "b":"-18x",
+        "c":"-x(3x)",
+        "d": "x(3x) ",
+        "corretta": "a"
+    }
+
+ ]    
