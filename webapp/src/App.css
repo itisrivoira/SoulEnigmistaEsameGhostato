@@ -65,6 +65,16 @@
     flex-direction: column;
   }
 
+  #homeLog{
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+  #login{
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
   #Gioco{
     display: none;
   }

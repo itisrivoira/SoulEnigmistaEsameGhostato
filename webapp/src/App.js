@@ -16,16 +16,27 @@ import acido from "./img/acido.jpg"
 import acqua from "./img/acqua.jpg"
 import chiave from "./img/chiave.jpg"
 import so3 from './img/so3.jpg'
+import Bakeracqua from './img/baker1.png'
+import Bakerso3 from './img/baker2.png'
+import Bakeracido from './img/baker3.png'
 
 function App() {
   useEffect(() => {
     inserisci("partenza5C");
-    
   }, [])
-  
+  var counter=0
   const [FinestraOpt, setFinestraOpt] = useState("Home")
   const [Componente, setComponente] = useState("")
   const [Zaino,setZaino]=useState([])
+  const [utente,setUtente]=useState([])
+  const [aCL,setaCL]=useState(document.getElementById("armadioChimLock"))
+
+  var baker=document.createElement("img")
+  baker.className="oggetto"
+  baker.id="baker"
+  baker.style.marginTop="110px"
+  baker.style.marginLeft="64px"
+  
   var zaino=Zaino
   var oggetti={
     acqua:acqua,
@@ -33,16 +44,21 @@ function App() {
     chiave:chiave,
     acido:acido
   }
-
+ 
   var classi={
     schermata :Classe5C,
     schermataCor:Corridoio,
     schermataChim:Chimica
   }
   const caricaPartita=()=>{
-    fetch("http://127.0.0.1:3001/caricaPartita")
+    fetch("http://127.0.0.1:3001/caricaPartita",{
+      method:"POST",
+      headers:{'Content-Type':'application/json;charset=utf-8'},
+      body:JSON.stringify({utente:utente})
+    })
     .then(response=>response.json())
     .then(data=>{
+      console.log(data)
       data.zaino.map((value)=>{
       
         let obj=document.createElement("img")
@@ -55,8 +71,13 @@ function App() {
         zaino.push(obj)
         setZaino(zaino)
       })
+      if(data.acl==1){
+        Cambia(Chimica)
+        document.getElementById("armadioChimLock").id="armadioChimOpen"
+      }
       Cambia(classi[data.classe])
       inserisci(data.posizione)
+      
       
     })
   }
@@ -67,6 +88,70 @@ function App() {
     document.getElementById(chiudi).style.display = "none"
     setFinestraOpt(chiudi)
   }
+
+  const banconeChim=()=>{
+    trasportato.parentNode.removeChild( trasportato );
+    zaino=zaino.filter(obj=>obj.id!=trasportato.id)
+    console.log(zaino)
+    if(counter==1){
+      let oggetto=document.createElement("img");
+      oggetto.src=acido
+      oggetto.className="oggetto"
+      oggetto.draggable=true
+      oggetto.id="acido"
+      baker.id="acido"
+    }else{
+      counter=1
+      
+      baker.id=trasportato.id
+
+    }
+    
+    
+    switch (baker.id) {
+      case "baker":
+        baker.src=Bakeracqua
+        break;
+      case "acqua":
+        baker.src=Bakeracqua
+        break;
+      case "so3":
+        baker.src=Bakerso3
+        break;
+      case "acido":
+        baker.src=Bakeracido
+        baker.draggable=true
+        break;
+      default:
+        break;
+    }
+    document.getElementsByClassName("schermata2")[0].removeChild(baker)
+    document.getElementsByClassName("schermata2")[0].appendChild(baker)
+
+  }
+
+ 
+  const login=()=>{
+    let user={
+      nick:document.getElementById("nick").value,
+      password: document.getElementById("password").value
+    }
+   
+    fetch("http://127.0.0.1:3001/login",{
+        method:"POST",
+        headers:{'Content-Type':'application/json;charset=utf-8'},
+        body:JSON.stringify(user)
+      }).then(response=>response.json()).then(data=>{
+        if (data.response) {
+          setUtente(data.response[0].id)
+          console.log("id utente: "+data.response[0].id)
+          Apri("homeLog","login")
+        }else{
+          console.log("utente non trovato")
+          alert("utente non trovato")
+        }
+      })
+    }
 
   const Cambia=(comp)=>{
     if (document.contains(document.getElementById("5c"))) {
@@ -114,7 +199,7 @@ function App() {
     }
   
   }, false);
-  var counter=0
+
 
  
   document.addEventListener("drop", function(event) {
@@ -149,46 +234,15 @@ function App() {
         setZaino(zaino)
       }
       
-    }else if(event.target.id=="imgBancone"){
-      if(trasportato.parentNode!=null){
-        trasportato.parentNode.removeChild( trasportato );
-      }
-
-      zaino.splice(0,1)
-      
-      if(counter==1){
-        let oggetto=document.createElement("img");
-        oggetto.src=acido
-        oggetto.className="oggetto"
-        oggetto.draggable=true
-        oggetto.id="acido"
-        let flag=0
-        zaino.map((obj)=>{
-          
-          if(obj.id=="acido"){
-            flag=1
-          }
-        })
-        if (flag==0){
-          zaino.push(oggetto)
-          
-        }
-        
-        counter=0
-      }else{
-        counter=1
-      
-      }
-      setZaino(zaino)
     }else if(event.target.id=="imgArmadioChimLock"){
       
       if(trasportato.id=="acido"){
         zaino=Zaino
-        zaino.filter(obj=>obj.id==trasportato.id)
+        zaino=zaino.filter(obj=>obj.id!="acido")
         setZaino(zaino)
-        if(trasportato.parentNode!=null){
-          trasportato.parentNode.removeChild( trasportato );
-        }
+        
+        trasportato.parentNode.removeChild( trasportato );
+        
         
         event.target.id="imgArmadioChimOpen"
         creaOggetto(chiave,"chiave",event.target)
@@ -202,10 +256,12 @@ function App() {
           trasportato.parentNode.removeChild( trasportato );
         }
         zaino=Zaino
-        zaino.filter(obj=>obj.id==trasportato.id)
-        setZaino(zaino)
+        zaino=zaino.filter(obj=>obj.id!=trasportato.id)
+        
         event.target.id="imgArmadio5COpen"
         document.getElementById("armadio").id="armadio5COpen"
+        setZaino(zaino)
+        setZaino(zaino)
       }
       
     }
@@ -258,165 +314,196 @@ function App() {
   }
 
   document.onkeyup=function(e) {
-    var charCode = e.keyCode;
+    if(document.getElementById("Gioco").style.display == "flex"){
+      var charCode = e.keyCode;
 
-    var schermata=document.getElementById("schermata")
-    var schermataChim=document.getElementById("schermataChim")
-    //alert(charCode)
-    if (charCode==13) {
-      var Posizione=document.getElementById("soul").parentNode.id
-      switch (Posizione) {
-        case "armadio":
-          if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
-            var armadio = document.createElement("div");
-            armadio.id="imgArmadio5CLock"
-            armadio.className="schermata2"
-            schermata.appendChild(armadio)
-          }
-          break;
-        case "computer":
-          if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
-            var computer = document.createElement("div");
-            computer.id="imgComputer"
-            computer.className="schermata2"
-            schermata.appendChild(computer)
-            creaicona(computer,imgReg,apriRegistro)
-            creaicona(computer,appBlocc,nonFaccioNiente)
-          }
-         
-          break;
-        case "lavagna":
-          if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
-            var lavagna = document.createElement("div");
-            lavagna.id="imgLavagna"
-            lavagna.className="schermata2"
-            schermata.appendChild(lavagna)
-          }
-          break;
-
-        case "porta5C":
-          Cambia(Corridoio)
-          inserisci("partenzaCor")
-          break;
-        case "cestini":
-          alert("SOUL:I cestini sono vuoti...")
-          break;
-        case "partenza5C":
-          alert("SOUL:La mia vecchia classe...")
-          break;
-        case "partenzaCor":
-          Cambia(Classe5C)
-          inserisci("porta5C")
-          break;
-        case "portaCor":
-          Cambia(Chimica)
-          inserisci("partenzaChim")
-          break;
-        case "partenzaChim":
-          Cambia(Corridoio)
-          inserisci("portaCor")
-          break;
-        case "armadioChim":
-          if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
-            var armadio = document.createElement("div");
-            armadio.id="imgArmadioChim"
-            armadio.className="schermata2"
-            schermataChim.appendChild(armadio)
-            creaOggetto(acqua,"acqua",armadio)
-            creaOggetto(so3,"so3",armadio)
-            }
-          break;
-          case "armadioChimLock":
-            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
-              var armadio = document.createElement("div");
-              armadio.id="imgArmadioChimLock"
-              armadio.className="schermata2"
-              schermataChim.appendChild(armadio)
-            }
-            break;
-          case "banconeChim6":
-            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
-              var bancone = document.createElement("div");
-              bancone.id="imgBancone"
-              bancone.value=0
-              bancone.className="schermata2"
-              schermataChim.appendChild(bancone)
-            }
-           break;
-          case "armadioChimOpen":
-            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
-              var armadio = document.createElement("div");
-              armadio.id="imgArmadioChimOpen"
-              armadio.className="schermata2"
-              schermataChim.appendChild(armadio)
-              creaOggetto(chiave,"chiave",armadio)
-              
-            }
-            break;
-          case "armadio5COpen":
+      var schermata=document.getElementById("schermata")
+      var schermataChim=document.getElementById("schermataChim")
+      //alert(charCode)
+      if (charCode==13) {
+        var Posizione=document.getElementById("soul").parentNode.id
+        switch (Posizione) {
+          case "armadio":
             if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
               var armadio = document.createElement("div");
-              armadio.id="imgArmadio5COpen"
+              armadio.id="imgArmadio5CLock"
               armadio.className="schermata2"
               schermata.appendChild(armadio)
-              
             }
-        default:
-          alert(document.getElementById("soul").parentNode.id)
-          break;
-      }
-    }else if (charCode==37) {
-      if(document.contains(document.getElementsByClassName("schermata2")[0])){
-        var computer=document.getElementsByClassName("schermata2")[0]
-        if(computer.contains(document.getElementsByClassName("schermata3")[0])){
-          var icone=document.getElementsByClassName("schermata2")[0].childNodes
-          for (let i = 0; i < icone.length; i++) {
-            icone[i].style.display="inline-block"
-          }
-          computer.removeChild(document.getElementsByClassName("schermata3")[0])
-        }else{
-          document.getElementsByClassName("schermata2")[0].parentNode.removeChild(document.getElementsByClassName("schermata2")[0])
-        }
-       
-      }
-     
-    }else if (charCode==77){
-      zaino=Zaino
-      
-      var finestra=document.getElementById("Contenitore")
-        if (finestra.contains(document.getElementById("Zaino"))) {
-          finestra.removeChild(document.getElementById("Zaino"))
-        }else{
-          var menuZaino = document.createElement("div");
-          menuZaino.id="Zaino"
-          console.log(zaino)
-          finestra.appendChild(menuZaino)
-          zaino.map((value)=>{
-            
-            menuZaino.append(value)
-          })
-        }
-      
-    }else if (charCode==79){
-      Apri("Option","Gioco")
-      
-    }else if(charCode==72){
-      Apri("Home","Gioco") 
-    }else if(charCode==83){
+            break;
+          case "computer":
+            if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
+              var computer = document.createElement("div");
+              computer.id="imgComputer"
+              computer.className="schermata2"
+              schermata.appendChild(computer)
+              creaicona(computer,imgReg,apriRegistro)
+              creaicona(computer,appBlocc,nonFaccioNiente)
+            }
+          
+            break;
+          case "lavagna":
+            if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
+              var lavagna = document.createElement("div");
+              lavagna.id="imgLavagna"
+              lavagna.className="schermata2"
+              schermata.appendChild(lavagna)
+            }
+            break;
 
-      let dati={
-        posizione:document.getElementById("soul").parentNode.id,
-        classe:document.getElementsByClassName("classe")[0].id,
-        zaino:[]
-    }
-      zaino.map((value)=>{
-        dati.zaino.push({id:value.id})
-      })
-      fetch("http://127.0.0.1:3001/salva",{
-        method:"POST",
-        headers:{'Content-Type':'application/json;charset=utf-8'},
-        body:JSON.stringify(dati)
-      }).then(response=>response.json()).then(data=>console.log(data))
+          case "porta5C":
+            Cambia(Corridoio)
+            inserisci("partenzaCor")
+            break;
+          case "cestini":
+            alert("SOUL:I cestini sono vuoti...")
+            break;
+          case "partenza5C":
+            alert("SOUL:La mia vecchia classe...")
+            break;
+          case "partenzaCor":
+            Cambia(Classe5C)
+            inserisci("porta5C")
+            break;
+          case "portaCor":
+            Cambia(Chimica)
+            inserisci("partenzaChim")
+            
+            break;
+          case "partenzaChim":
+            Cambia(Corridoio)
+            inserisci("portaCor")
+            break;
+          case "armadioChim":
+            if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+              var armadio = document.createElement("div");
+              armadio.id="imgArmadioChim"
+              armadio.className="schermata2"
+              schermataChim.appendChild(armadio)
+              creaOggetto(acqua,"acqua",armadio)
+              creaOggetto(so3,"so3",armadio)
+              }
+            break;
+            case "armadioChimLock":
+              if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+                var armadio = document.createElement("div");
+                armadio.id="imgArmadioChimLock"
+                armadio.className="schermata2"
+                schermataChim.appendChild(armadio)
+              }
+              break;
+            case "banconeChim6":
+              if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+                var bancone = document.createElement("div");
+                bancone.id="imgBancone"
+                bancone.value=0
+                bancone.className="schermata2"
+                bancone.ondragover=(event)=>event.preventDefault
+                bancone.ondrop=banconeChim
+                switch (baker.id) {
+                  case "baker":
+                    baker.src=Bakeracqua
+                    break;
+                  case "acqua":
+                    baker.src=Bakeracqua
+                    break;
+                  case "so3":
+                    baker.src=Bakerso3
+                    break;
+                  case "acido":
+                    baker.src=Bakeracido
+                    baker.draggable=true
+                    break;
+                  default:
+                    break;
+                }
+                baker.style.width="250px"
+                baker.style.height="274px"
+                bancone.appendChild(baker)
+                schermataChim.appendChild(bancone)
+              }
+            break;
+            case "armadioChimOpen":
+              if(!schermataChim.contains(document.getElementsByClassName("schermata2")[0])){
+                var armadio = document.createElement("div");
+                armadio.id="imgArmadioChimOpen"
+                armadio.className="schermata2"
+                schermataChim.appendChild(armadio)
+                creaOggetto(chiave,"chiave",armadio)
+                
+              }
+              break;
+            case "armadio5COpen":
+              if(!schermata.contains(document.getElementsByClassName("schermata2")[0])){
+                var armadio = document.createElement("div");
+                armadio.id="imgArmadio5COpen"
+                armadio.className="schermata2"
+                schermata.appendChild(armadio)
+                
+              }
+          default:
+            alert(document.getElementById("soul").parentNode.id)
+            break;
+        }
+      }else if (charCode==37) {
+        if(document.contains(document.getElementsByClassName("schermata2")[0])){
+          var computer=document.getElementsByClassName("schermata2")[0]
+          if(computer.contains(document.getElementsByClassName("schermata3")[0])){
+            var icone=document.getElementsByClassName("schermata2")[0].childNodes
+            for (let i = 0; i < icone.length; i++) {
+              icone[i].style.display="inline-block"
+            }
+            computer.removeChild(document.getElementsByClassName("schermata3")[0])
+          }else{
+            document.getElementsByClassName("schermata2")[0].parentNode.removeChild(document.getElementsByClassName("schermata2")[0])
+          }
+        
+        }
+      
+      }else if (charCode==77){
+        zaino=Zaino
+        
+        var finestra=document.getElementById("Contenitore")
+          if (finestra.contains(document.getElementById("Zaino"))) {
+            finestra.removeChild(document.getElementById("Zaino"))
+          }else{
+            var menuZaino = document.createElement("div");
+            menuZaino.id="Zaino"
+            console.log(zaino)
+            finestra.appendChild(menuZaino)
+            zaino.map((value)=>{
+              
+              menuZaino.append(value)
+            })
+          }
+        
+      }else if (charCode==79){
+        Apri("Option","Gioco")
+        
+      }else if(charCode==72){
+        Apri("homeLog","Gioco") 
+      }else if(charCode==83){
+        if (document.contains(aCL)) {
+          var lock=0
+        }else{
+          lock=1
+        }
+        let dati={
+          utente:utente,
+          acl:lock,
+          posizione:document.getElementById("soul").parentNode.id,
+          classe:document.getElementsByClassName("classe")[0].id,
+          zaino:[]
+      }
+        zaino.map((value)=>{
+          dati.zaino.push({id:value.id})
+        })
+        fetch("http://127.0.0.1:3001/salva",{
+          method:"POST",
+          headers:{'Content-Type':'application/json;charset=utf-8'},
+          body:JSON.stringify(dati)
+        }).then(response=>response.json()).then(data=>console.log(data))
+      }
     }
   }
   return (
@@ -424,13 +511,35 @@ function App() {
     <div id='Contenitore'>
       
       <div id="Home" class="Finestra">
-      <img class="logo" src={foto} width="80%" ></img>
-        <div id="pulsanti">
-          <input id='play' type="button" value="PLAY"  onClick={()=>Apri("Gioco","Home") }/>
-          <input id='play' type="button" value="Carica Partita"  onClick={()=>{Apri("Gioco","Home");caricaPartita() }}/>
+        <img class="logo" src={foto} width="80%" ></img>
+          <div id="pulsanti">
+            <input id='Loginbt' type="button" value="Login"  onClick={()=>Apri("login","Home") }/>
           
-          <input class='option' type="button" value="OPTION"  onClick={()=>Apri("Option","Home") }/>
+            <input class='option' type="button" value="OPTION"  onClick={()=>Apri("Option","Home") }/>
+          </div>
+      </div>
+
+      <div id="login" hidden>
+        <img class="logo" src={foto} width="80%" ></img>
+        
+        <div id="pulsanti">
+          <input type="text" id="nick" name="nick" placeholder="Inserisci nick" required />
+          <input type="text" id="password" name="password" placeholder="Inserisci password" required />
+          
+          <input type="button" onClick={()=>{login()}} value="Login"/>
+          <input class='option' type="button" value="OPTION"  onClick={()=>Apri("Option","login") }/>
+          
         </div>
+        
+      </div>
+
+      <div id="homeLog" hidden>
+        <img class="logo" src={foto} width="80%" ></img>
+        
+        <div id="pulsanti">
+          <input id='play' type="button" value="PLAY"  onClick={()=>Apri("Gioco","homeLog") }/>
+          <input id='play' type="button" value="Carica Partita"  onClick={()=>{Apri("Gioco","homeLog");caricaPartita() }}/>
+        </div> 
       </div>
       <Opzioni from={FinestraOpt}/>
       
@@ -441,7 +550,8 @@ function App() {
         {Componente}
         
       </div>
-      <audio id="cs_audio" loop controls autoPlay hidden="true">
+      
+      <audio id="cs_audio" loop controls autoPlay hidden>
         <source src={imagine} type="audio/mpeg"/>
       </audio>
     </div>

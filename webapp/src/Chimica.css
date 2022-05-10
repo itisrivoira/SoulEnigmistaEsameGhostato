@@ -23,6 +23,12 @@
     height: 64px;
     margin-top: 110px;
 }
+#imgBancone{
+    background-image: url("img/schermate/bancone_chimica.png");
+    margin-left: 100px;
+    width: 576px;
+    height:407px
+}
 
 #armadioChimLock{
     width:64px;
