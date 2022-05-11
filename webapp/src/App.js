@@ -20,16 +20,16 @@ import Bakeracqua from './img/baker1.png'
 import Bakerso3 from './img/baker2.png'
 import Bakeracido from './img/baker3.png'
 
-function App() {
+function App() {  //inserisco le variabili
   useEffect(() => {
     inserisci("partenza5C");
   }, [])
   var counter=0
-  const [FinestraOpt, setFinestraOpt] = useState("Home")
-  const [Componente, setComponente] = useState("")
-  const [Zaino,setZaino]=useState([])
-  const [utente,setUtente]=useState([])
-  const [aCL,setaCL]=useState(document.getElementById("armadioChimLock"))
+  const [FinestraOpt, setFinestraOpt] = useState("Home")  //Finestra opzioni
+  const [Componente, setComponente] = useState("")  //quale componente visulaizzo
+  const [Zaino,setZaino]=useState([])   //array di zaino
+  const [utente,setUtente]=useState([])  //id dell'utente
+  const [aCL,setaCL]=useState(0) //armadio è chiuso o aperto
 
   var baker=document.createElement("img")
   baker.className="oggetto"
@@ -38,13 +38,14 @@ function App() {
   baker.style.marginLeft="64px"
   
   var zaino=Zaino
-  var oggetti={
+  var oggetti={   //ad ogni id corrisponde un immagine perchè non può accedere direttamente al file system ma inserire i file
     acqua:acqua,
     so3:so3,
     chiave:chiave,
     acido:acido
   }
  
+//oggetto classi con chiave id e valore con l'immagine della classe
   var classi={
     schermata :Classe5C,
     schermataCor:Corridoio,
@@ -59,7 +60,7 @@ function App() {
     .then(response=>response.json())
     .then(data=>{
       console.log(data)
-      data.zaino.map((value)=>{
+      data.zaino.map((value)=>{ //per ogni oggetto nello zaino lo aggiungo
       
         let obj=document.createElement("img")
         obj.src=oggetti[value.id]
@@ -75,8 +76,8 @@ function App() {
         Cambia(Chimica)
         document.getElementById("armadioChimLock").id="armadioChimOpen"
       }
-      Cambia(classi[data.classe])
-      inserisci(data.posizione)
+      Cambia(classi[data.classe]) //cambiare classe
+      inserisci(data.posizione) //inserire soul
       
       
     })
@@ -89,7 +90,7 @@ function App() {
     setFinestraOpt(chiudi)
   }
 
-  const banconeChim=()=>{
+  const banconeChim=()=>{   //on drop del bancone e se counter è 1 allora crea l'oggetto acido
     trasportato.parentNode.removeChild( trasportato );
     zaino=zaino.filter(obj=>obj.id!=trasportato.id)
     console.log(zaino)
@@ -126,26 +127,26 @@ function App() {
         break;
     }
     document.getElementsByClassName("schermata2")[0].removeChild(baker)
-    document.getElementsByClassName("schermata2")[0].appendChild(baker)
+    document.getElementsByClassName("schermata2")[0].appendChild(baker)   //aggiono eliminandolo e rimettendolo
 
   }
 
  
   const login=()=>{
     let user={
-      nick:document.getElementById("nick").value,
+      nick:document.getElementById("nick").value, //litteral object
       password: document.getElementById("password").value
     }
    
     fetch("http://127.0.0.1:3001/login",{
         method:"POST",
-        headers:{'Content-Type':'application/json;charset=utf-8'},
-        body:JSON.stringify(user)
+        headers:{'Content-Type':'application/json;charset=utf-8'},  //sto mandando i dati in json
+        body:JSON.stringify(user)//trasforma in json il litteral object
       }).then(response=>response.json()).then(data=>{
         if (data.response) {
           setUtente(data.response[0].id)
           console.log("id utente: "+data.response[0].id)
-          Apri("homeLog","login")
+          Apri("homeLog","login") //cambia immagine
         }else{
           console.log("utente non trovato")
           alert("utente non trovato")
@@ -153,7 +154,7 @@ function App() {
       })
     }
 
-  const Cambia=(comp)=>{
+  const Cambia=(comp)=>{    //cambia il componente
     if (document.contains(document.getElementById("5c"))) {
       document.getElementById("5c").parentNode.removeChild(document.getElementById("5c"))
     }
@@ -161,7 +162,7 @@ function App() {
   }
 
 
-  const inserisci=(pos)=>{
+  const inserisci=(pos)=>{    //inserisce soul in una casella
     if (document.contains(document.getElementById("soul"))) {
         document.getElementById("soul").parentNode.removeChild((document.getElementById("soul")))
     }
@@ -177,18 +178,18 @@ function App() {
   var trasportato;
   document.addEventListener("dragstart", function(event) {
     // Metto l'immagine di Soul in una variabile
-    trasportato = event.target;
+    trasportato = event.target; //oggetto che sto spostando
   }, false);
 
   document.addEventListener("dragover", function(event) {
-    event.preventDefault()
+    event.preventDefault()  //annulla tutte le funzioni di default
   }, false);
   
   document.addEventListener("dragenter", function(event) {
     // coloro la casella su cui passo sopra
     if (event.target.className == "casella") {
       event.target.style.background = "purple";
-    }
+    } //colora di viola la casella dove passa soul
   
   }, false);
   
@@ -490,9 +491,9 @@ function App() {
         }
         let dati={
           utente:utente,
-          acl:lock,
-          posizione:document.getElementById("soul").parentNode.id,
-          classe:document.getElementsByClassName("classe")[0].id,
+          acl:lock, //0 se l'armadio di chimica è chiuso e 1 se è aperto
+          posizione:document.getElementById("soul").parentNode.id,  //id della casella di Soul
+          classe:document.getElementsByClassName("classe")[0].id, //id della classe dov'è soul
           zaino:[]
       }
         zaino.map((value)=>{
