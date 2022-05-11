@@ -109,7 +109,15 @@
       margin-top: 5%;
       align-self: center;
     }
-    #pulsanti{
+    .formU{
+      width:50%;
+      align-self: center;
+    }
+    #logU{
+      width:20%;
+      align-self: center;
+    }
+    .pulsanti{
       align-self: center;
       display: flex;
       flex-direction: column;

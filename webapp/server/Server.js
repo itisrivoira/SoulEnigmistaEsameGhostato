@@ -36,7 +36,7 @@ app.post('/salva',(req,res)=>{
     con.query("SELECT * FROM Salvataggi WHERE id='"+req.body.utente+"'", function (err, result) {
         if (err) throw err;
         if (result.length>0) {
-            con.query("UPDATE Salvataggi SET Posizione ='"+req.body.posizione+"', Classe ='"+req.body.classe+"', acl ='"+req.body.acl+"' WHERE id='"+req.body.utente+"' ", function (err, result) {
+            con.query("UPDATE Salvataggi SET Posizione ='"+req.body.posizione+"', Classe ='"+req.body.classe+"', acl ='"+req.body.acl+"', aga ='"+req.body.aga+"' WHERE id='"+req.body.utente+"' ", function (err, result) {
                 if (err) throw err;
               });   //aggiorna gli elementi nel salvataggio su sql
 
@@ -55,7 +55,7 @@ app.post('/salva',(req,res)=>{
         }else{
             console.log("dati salvati:")
             console.log(dati)
-            con.query("INSERT INTO Salvataggi(id,Posizione,Classe,acl) VALUES('"+req.body.utente+"','"+req.body.posizione+"','"+req.body.classe+",'"+req.body.acl+"')", function (err, result) {
+            con.query("INSERT INTO Salvataggi(id,Posizione,Classe,acl,aga) VALUES('"+req.body.utente+"','"+req.body.posizione+"','"+req.body.classe+",'"+req.body.acl+"','"+req.body.aga+"')", function (err, result) {
                 if (err) throw err;
               });
               con.query("CREATE TABLE IF NOT EXISTS Zaino"+req.body.utente+"(id varchar(20) NOT NULL PRIMARY KEY)", function (err, result) {
@@ -80,6 +80,7 @@ app.post('/salva',(req,res)=>{
 
 app.post('/caricaPartita',(req,res)=>{
     var dati={
+        aga:0,
         acl:0,
         posizione:"",
         classe:"",
@@ -97,6 +98,7 @@ app.post('/caricaPartita',(req,res)=>{
             dati.posizione=result[0].Posizione
             dati.classe=result[0].Classe
             dati.acl=result[0].acl
+            dati.aga=result[0].aga
             res.send(JSON.stringify(dati))  //send invia i dati al client in json
             console.log("dati inviati:")
             console.log(dati)

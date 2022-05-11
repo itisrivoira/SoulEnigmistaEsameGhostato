@@ -29,13 +29,19 @@ function App() {  //inserisco le variabili
   const [Componente, setComponente] = useState("")  //quale componente visulaizzo
   const [Zaino,setZaino]=useState([])   //array di zaino
   const [utente,setUtente]=useState([])  //id dell'utente
-  const [aCL,setaCL]=useState(0) //armadio è chiuso o aperto
 
+
+  var aGA
+  aGA=0
   var baker=document.createElement("img")
   baker.className="oggetto"
   baker.id="baker"
+  baker.name="nonPreso"
   baker.style.marginTop="110px"
   baker.style.marginLeft="64px"
+  baker.draggable=false
+  baker.ondragend=(e)=>{e.target.src=acido}
+  
   
   var zaino=Zaino
   var oggetti={   //ad ogni id corrisponde un immagine perchè non può accedere direttamente al file system ma inserire i file
@@ -76,6 +82,9 @@ function App() {  //inserisco le variabili
         Cambia(Chimica)
         document.getElementById("armadioChimLock").id="armadioChimOpen"
       }
+      if(data.aga==1){
+        aGA=1
+      }
       Cambia(classi[data.classe]) //cambiare classe
       inserisci(data.posizione) //inserire soul
       
@@ -95,12 +104,8 @@ function App() {  //inserisco le variabili
     zaino=zaino.filter(obj=>obj.id!=trasportato.id)
     console.log(zaino)
     if(counter==1){
-      let oggetto=document.createElement("img");
-      oggetto.src=acido
-      oggetto.className="oggetto"
-      oggetto.draggable=true
-      oggetto.id="acido"
       baker.id="acido"
+      baker.name="preso"
     }else{
       counter=1
       
@@ -204,7 +209,7 @@ function App() {  //inserisco le variabili
 
  
   document.addEventListener("drop", function(event) {
-
+    event.preventDefault()
     // Inserisco l'immagine di Soul nella casella
     if (event.target.className == "casella") {
       event.target.style.background = "";
@@ -401,26 +406,32 @@ function App() {  //inserisco le variabili
                 bancone.className="schermata2"
                 bancone.ondragover=(event)=>event.preventDefault
                 bancone.ondrop=banconeChim
-                switch (baker.id) {
-                  case "baker":
-                    baker.src=Bakeracqua
-                    break;
-                  case "acqua":
-                    baker.src=Bakeracqua
-                    break;
-                  case "so3":
-                    baker.src=Bakerso3
-                    break;
-                  case "acido":
-                    baker.src=Bakeracido
-                    baker.draggable=true
-                    break;
-                  default:
-                    break;
-                }
-                baker.style.width="250px"
-                baker.style.height="274px"
-                bancone.appendChild(baker)
+                
+                if(baker.name!="preso"){
+                  if(aGA!=1){
+                
+                    switch (baker.id) {
+                      case "baker":
+                        baker.src=Bakeracqua
+                        break;
+                      case "acqua":
+                        baker.src=Bakeracqua
+                        break;
+                      case "so3":
+                        baker.src=Bakerso3
+                        break;
+                      case "acido":
+                        baker.src=Bakeracido
+                        baker.draggable=true
+                        break;
+                      default:
+                        break;
+                    }
+                    baker.style.width="250px"
+                    baker.style.height="274px"
+                    bancone.appendChild(baker)
+                } 
+              }
                 schermataChim.appendChild(bancone)
               }
             break;
@@ -484,13 +495,24 @@ function App() {  //inserisco le variabili
       }else if(charCode==72){
         Apri("homeLog","Gioco") 
       }else if(charCode==83){
-        if (document.contains(aCL)) {
-          var lock=0
-        }else{
-          lock=1
+        var lock=0
+        try{
+          if (document.contains(document.getElementById("armadioChimOpen"))) {
+            var lock=1
+          }
         }
+        catch{
+          nonFaccioNiente()
+        }
+        if(baker.name=="preso"){
+          var aGA=1
+        }else{
+          var aGA=0
+        }
+      
         let dati={
           utente:utente,
+          aga:aGA,
           acl:lock, //0 se l'armadio di chimica è chiuso e 1 se è aperto
           posizione:document.getElementById("soul").parentNode.id,  //id della casella di Soul
           classe:document.getElementsByClassName("classe")[0].id, //id della classe dov'è soul
@@ -513,8 +535,8 @@ function App() {  //inserisco le variabili
       
       <div id="Home" class="Finestra">
         <img class="logo" src={foto} width="80%" ></img>
-          <div id="pulsanti">
-            <input id='Loginbt' type="button" value="Login"  onClick={()=>Apri("login","Home") }/>
+          <div class="pulsanti">
+            <input class='option' id='Loginbt' type="button" value="Login"  onClick={()=>Apri("login","Home") }/>
           
             <input class='option' type="button" value="OPTION"  onClick={()=>Apri("Option","Home") }/>
           </div>
@@ -523,11 +545,11 @@ function App() {  //inserisco le variabili
       <div id="login" hidden>
         <img class="logo" src={foto} width="80%" ></img>
         
-        <div id="pulsanti">
-          <input type="text" id="nick" name="nick" placeholder="Inserisci nick" required />
-          <input type="text" id="password" name="password" placeholder="Inserisci password" required />
+        <div class="pulsanti" >
+          <input type="text" class="formU" id="nick" name="nick" placeholder="Inserisci nick" required />
+          <input type="text" class="formU" id="password" name="password" placeholder="Inserisci password" required />
           
-          <input type="button" onClick={()=>{login()}} value="Login"/>
+          <input type="button" id="logU" onClick={()=>{login()}} value="Login"/>
           <input class='option' type="button" value="OPTION"  onClick={()=>Apri("Option","login") }/>
           
         </div>
@@ -537,7 +559,7 @@ function App() {  //inserisco le variabili
       <div id="homeLog" hidden>
         <img class="logo" src={foto} width="80%" ></img>
         
-        <div id="pulsanti">
+        <div class="pulsanti">
           <input id='play' type="button" value="PLAY"  onClick={()=>Apri("Gioco","homeLog") }/>
           <input id='play' type="button" value="Carica Partita"  onClick={()=>{Apri("Gioco","homeLog");caricaPartita() }}/>
         </div> 

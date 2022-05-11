@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Mag 10, 2022 alle 20:06
+-- Creato il: Mag 12, 2022 alle 00:25
 -- Versione del server: 10.4.21-MariaDB
 -- Versione PHP: 7.4.24
 
@@ -31,15 +31,16 @@ CREATE TABLE `Salvataggi` (
   `id` int(11) NOT NULL,
   `Posizione` varchar(20) NOT NULL,
   `Classe` varchar(20) NOT NULL,
-  `acl` int(11) NOT NULL
+  `acl` int(11) NOT NULL,
+  `aga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `Salvataggi`
 --
 
-INSERT INTO `Salvataggi` (`id`, `Posizione`, `Classe`, `acl`) VALUES
-(1, 'armadioChimOpen', 'schermataChim', 1);
+INSERT INTO `Salvataggi` (`id`, `Posizione`, `Classe`, `acl`, `aga`) VALUES
+(1, 'armadioChimOpen', 'schermataChim', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,9 @@ CREATE TABLE `Zaino1` (
 --
 
 INSERT INTO `Zaino1` (`id`) VALUES
-('acido');
+('acido'),
+('acqua'),
+('so3');
 
 --
 -- Indici per le tabelle scaricate
