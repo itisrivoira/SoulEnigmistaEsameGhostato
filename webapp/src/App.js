@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import * as ReactDOM from 'react-dom'
 import { useState,useEffect } from 'react';
 import './App.css';
 import Opzioni from './Opzioni';
@@ -19,6 +19,7 @@ import so3 from './img/so3.jpg'
 import Bakeracqua from './img/baker1.png'
 import Bakerso3 from './img/baker2.png'
 import Bakeracido from './img/baker3.png'
+import AppBloccata from './AppBloccata'
 
 function App() {  //inserisco le variabili
   useEffect(() => {
@@ -43,6 +44,7 @@ function App() {  //inserisco le variabili
   baker.ondragend=(e)=>{e.target.src=acido}
   
   
+
   var zaino=Zaino
   var oggetti={   //ad ogni id corrisponde un immagine perchè non può accedere direttamente al file system ma inserire i file
     acqua:acqua,
@@ -314,6 +316,170 @@ function App() {  //inserisco le variabili
     
 
   }
+  const domande=(computer,i,Domande,corretta="")=>{
+    if (i>0) {
+      if (Domande[i-1]["corretta"]==corretta) {
+        computer.removeChild(document.getElementByClassName("schermata3"))
+      let appOpen = document.createElement("div");
+      appOpen.className="schermata3"
+      appOpen.id="appOpen"
+      let inputDomanda=document.createElement("input")
+      inputDomanda.type="text"
+      inputDomanda.readOnly=true
+      inputDomanda.value=Domande[i].domanda
+      appOpen.appendChild(inputDomanda)
+
+      let inputRisposta=document.createElement("input")
+      inputRisposta.type="radio"
+      inputRisposta.name="risposta"
+      inputRisposta.id="a"
+      let inputLabel=document.createElement("input")
+      inputLabel.value=Domande[i]["a"]
+      inputLabel.for="a"
+      appOpen.appendChild(inputRisposta)
+      appOpen.appendChild(inputLabel)
+
+      inputRisposta=document.createElement("input")
+      inputRisposta.type="radio"
+      inputRisposta.name="risposta"
+      inputRisposta.id="b"
+      inputLabel=document.createElement("input")
+      
+      inputLabel.value=Domande[0]["b"]
+      inputLabel.for="b"
+      appOpen.appendChild(inputRisposta)
+      appOpen.appendChild(inputLabel)
+
+      inputRisposta=document.createElement("input")
+      inputRisposta.type="radio"
+      inputRisposta.name="risposta"
+      inputLabel.type="text"
+      inputRisposta.id="c"
+      inputLabel=document.createElement("input")
+      inputLabel.value=Domande[i]["c"]
+      inputLabel.for="c"
+      appOpen.appendChild(inputRisposta)
+      appOpen.appendChild(inputLabel)
+
+      inputRisposta=document.createElement("input")
+      inputRisposta.type="radio"
+      inputRisposta.name="risposta"
+      inputRisposta.id="d"
+      inputLabel=document.createElement("input")
+      inputLabel.type="text"
+      inputLabel.value=Domande[i]["d"]
+      inputLabel.for="d"
+      var button=document.createElement("input")
+      button.type="button"
+      button.onclick=()=>domande(computer,i+1,Domande,document.forms.MyForm.risposta.value)
+      button.value="invia"
+      
+      appOpen.appendChild(inputRisposta)
+      appOpen.appendChild(inputLabel)
+      appOpen.appendChild(button)
+      computer.appendChild(appOpen)
+
+      }else{
+        alert("Risposta Sbagliata")
+      }
+    }else{
+      computer.removeChild(document.getElementsByClassName("schermata3")[0])
+        let appOpen = document.createElement("div");
+        appOpen.className="schermata3"
+        appOpen.id="appOpen"
+        let inputDomanda=document.createElement("input")
+        inputDomanda.type="text"
+        inputDomanda.readOnly=true
+        inputDomanda.value=Domande[i].domanda
+        appOpen.appendChild(inputDomanda)
+
+        let inputRisposta=document.createElement("input")
+        inputRisposta.type="radio"
+        inputRisposta.name="risposta"
+        inputRisposta.id="a"
+        let inputLabel=document.createElement("input")
+        inputLabel.value=Domande[i]["a"]
+        inputLabel.for="a"
+        appOpen.appendChild(inputRisposta)
+        appOpen.appendChild(inputLabel)
+
+        inputRisposta=document.createElement("input")
+        inputRisposta.type="radio"
+        inputRisposta.name="risposta"
+        inputRisposta.id="b"
+        inputLabel=document.createElement("input")
+        
+        inputLabel.value=Domande[0]["b"]
+        inputLabel.for="b"
+        appOpen.appendChild(inputRisposta)
+        appOpen.appendChild(inputLabel)
+
+        inputRisposta=document.createElement("input")
+        inputRisposta.type="radio"
+        inputRisposta.name="risposta"
+        inputLabel.type="text"
+        inputRisposta.id="c"
+        inputLabel=document.createElement("input")
+        inputLabel.value=Domande[i]["c"]
+        inputLabel.for="c"
+        appOpen.appendChild(inputRisposta)
+        appOpen.appendChild(inputLabel)
+
+        inputRisposta=document.createElement("input")
+        inputRisposta.type="radio"
+        inputRisposta.name="risposta"
+        inputRisposta.id="d"
+        inputLabel=document.createElement("input")
+        inputLabel.type="text"
+        inputLabel.value=Domande[i]["d"]
+        inputLabel.for="d"
+        var button=document.createElement("input")
+        button.type="button"
+        
+        button.value="invia"
+        
+        appOpen.appendChild(inputRisposta)
+        appOpen.appendChild(inputLabel)
+        appOpen.appendChild(button)
+        computer.appendChild(appOpen)
+
+    } 
+  }
+  const controllaPin=(computer,i)=>{
+    if(document.getElementById("inputAppLock").value == "1984"){
+      fetch("http://127.0.0.1:3001/domande")
+    .then(response=>response.json())
+    .then(Domande=>{
+      domande(computer,i,Domande)
+    })
+    }else{
+      alert("Password Errata")
+    }
+
+
+  }
+  const apriAppBloccata=(computer)=>{
+    var appLock = document.createElement("div");
+    var icone = computer.childNodes;
+
+    for (let i = 0; i < icone.length; i++) {
+      icone[i].style.display="none"
+    }
+    appLock.id="appLock"
+    appLock.className="schermata3"
+    let input=document.createElement("input")
+    input.type="text"
+    input.id="inputAppLock"
+    input.placeholder="inserisci pin"
+    let button=document.createElement("input")
+    button.type="button"
+    button.value="Entra"
+    button.onclick=()=>controllaPin(computer,0)
+    appLock.appendChild(button)
+    appLock.appendChild(input)
+    computer.appendChild(appLock)
+
+  }
 
   const nonFaccioNiente=()=>{
     return null
@@ -344,7 +510,7 @@ function App() {  //inserisco le variabili
               computer.className="schermata2"
               schermata.appendChild(computer)
               creaicona(computer,imgReg,apriRegistro)
-              creaicona(computer,appBlocc,nonFaccioNiente)
+              creaicona(computer,appBlocc,apriAppBloccata)
             }
           
             break;

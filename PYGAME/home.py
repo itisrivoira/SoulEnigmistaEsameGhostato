@@ -1,10 +1,11 @@
 
+from xxlimited import Null
 import pygame,sys
 pygame.init() 
-FPS=60
 clock = pygame.time.Clock()
-clock.tick(FPS)
+clock.tick(60)
 
+scherm=Null
 
 oggetti=[]
 
@@ -15,6 +16,8 @@ schermata="Home"
 run=True
 
 flagLav=False
+
+selezionato=Null
 
 def nulla():
     pass
@@ -36,6 +39,9 @@ mostraZaino=nulla
 
 global Bag
 Bag=[]
+
+global count_baker
+count_baker=0
 
 global WIDTH
 WIDTH=1071
@@ -67,12 +73,17 @@ cattedra=pygame.image.load("img/cattedra.jpg").convert_alpha()
 corridoio=pygame.image.load("img/corridoio.png").convert_alpha()
 porta=pygame.image.load("img/porta.png").convert_alpha()
 schermataArm=pygame.image.load("img/armadioApertoVuoto.png").convert()
+schermataArmLock=pygame.image.load("img/armadioChiuso.png").convert()
+schermataArmLock5C=schermataArmLock
 acqua=pygame.image.load("img/acqua.jpg").convert_alpha()
 so3=pygame.image.load("img/so3.jpeg").convert_alpha()
 acido=pygame.image.load("img/acido.jpg").convert_alpha()
 logo=pygame.transform.smoothscale(logo, (772, 222))
 zaino=pygame.transform.smoothscale(classe5C, (200, 200))
 bancoChimica=pygame.image.load("img/Banco2.png").convert_alpha()
+schermChimica=pygame.image.load("img/bancone_chimica.png").convert()
+bakerVuoto=pygame.image.load("img/baker1.png").convert_alpha()
+chiave=pygame.image.load("img/chiave.jpg").convert_alpha()
 
 pygame.display.set_icon(icona)
 pygame.display.set_caption("SOUL'ENIGMISTA")
@@ -84,29 +95,55 @@ class Oggetto:
         self.width=width
         self.x=x
         self.x2=x+width
-        self.y=y
         self.y2=y+heigth
+        self.y=y
         self.interazione=funz
         self.classe=classe
-        
+
         oggetti.append(self)
+        
+         
+    def draw(self):
+        SCREEN.blit(self.img,(self.x,self.y))
+        
+class Applicazione:
+    def __init__(self,nome="",img="",width=0,heigth=0,x=0,y=0,funz=lambda: print("Nessuna interazione")):
+        self.nome=nome
+        self.img=img
+        self.heigth=heigth
+        self.width=width
+        self.x=x
+        self.x2=x+width
+        self.y2=y+heigth
+        self.y=y
+        self.interazione=funz
+        
         
          
     def draw(self):
         SCREEN.blit(self.img,(self.x,self.y))
 
 class Strumento:
-    def __init__(self,nome="",img="",x=0,y=0,width=0,heigth=0):
+    def __init__(self,nome="",img="",x=0,y=0,width=0,heigth=0,interazione=lambda:print("non faccio nulla")):
+        
+        self.interagibile=0
         self.img=img
         self.x=x
-        self.y=y     
+        self.y=y 
+        self.width=width  
+        self.heigth=heigth
         self.x2=x+width
         self.y2=y+heigth
         self.nome=nome
+        self.interazione=interazione
         strumenti.append(self)
 
     def mostraOgg(self):
         SCREEN.blit(self.img,(self.x,self.y))
+
+    
+
+
 
 class Icona:
     def __init__(self,img="",x=0,y=0):
@@ -119,15 +156,28 @@ class Icona:
     def draw(self):
         SCREEN.blit(self.img,(self.x,self.y))
 
+class Schermata:
+    def __init__(self,img="",x=0,y=0,width=0,heigth=0,classe=""):
+        self.img=img
+        self.x=x
+        self.y=y 
+        self.width=width
+        self.heigth=heigth
+        self.classe=classe
+       
+
+
+    def draw(self):
+        SCREEN.blit(self.img,(self.x,self.y))
+
 class Stanza:
-    def __init__(self,img="",x=0,y=0,width=0,heigth=0,classe="",xSoul=0,ySoul=0):
+    def __init__(self,img="",x=0,y=0,width=0,heigth=0,classe=""):
         self.img=img
         self.x=x
         self.y=y 
         self.width=width
         self.heigth=heigth
         self.classe=classe #identificativo per capire in che stanza ci troviamo durante il gioco
-        
 
     def draw(self):
         SCREEN.blit(self.img,(self.x,self.y))
@@ -210,16 +260,19 @@ class Soul:
         self.direzione=""
 
     def vaiSu(self):
-        self.vely-=5
+        if(MULT!=0):
+            self.vely-=4/MULT
 
     def vaiGiu(self):
-        self.vely+=5
-
+        if(MULT!=0):
+            self.vely+=4/MULT
     def vaiDx(self):
-        self.velx+=5
+        if(MULT!=0):
+            self.velx+=4/MULT
 
     def vaiSx(self):
-        self.velx-=5
+        if(MULT!=0):
+            self.velx-=4/MULT
 
     def ferma(self):
         self.vely=0
@@ -247,9 +300,10 @@ def apriZaino():
     SCREEN.blit(zaino,(0,0))
     for obj in Bag:
         obj.x=i*50
-        print(i)
+        obj.x2=obj.x+obj.width
         obj.y=0
         obj.mostraOgg()
+        obj.interagibile=1
         i=i+1
         
 
@@ -264,10 +318,13 @@ def  abbassa():
 def apriSchermata(schermata,x,y):
     SCREEN.blit(schermata,(x,y))
 
+
+
 def apriComputer5C():
-    SCREEN.blit(computer,(246,120))
-    for i in icona5C:
-        i.draw()
+    scherm=Schermata(computer,246,120,576,407,"5C")
+    scherm.draw()
+    Applicazione("registro",registro,96,69,400,250).draw()
+    Applicazione("appBlocc",appBlocc,95,84,600,250).draw()
 
 def funz_mostraZaino():
         global mostraZaino
@@ -280,16 +337,82 @@ def funz_mostraZaino():
             flag=0
             mostraZaino=apriZaino
 
+def aggiungiZaino(strumento):
+            if strumento in Bag:
+                global selezionato
+                if selezionato!= strumento:
+                    for strum in Bag:
+                        strum.img=pygame.transform.smoothscale(strum.img,( 32, 32))
+                        strum.width=32
+                        strum.heigth=32
+                    strumento.img=pygame.transform.smoothscale(strumento.img,( 48, 48))
+                    strumento.width=48
+                    strumento.heigth=48
+                    selezionato=strumento
+                else:
+                    strumento.img=pygame.transform.smoothscale(strumento.img,( 32, 32))
+                    strumento.width=32
+                    strumento.heigth=32
+                    selezionato=Null
+
+            else:
+                strumento.img=pygame.transform.smoothscale(strumento.img,( 32, 32))
+                strumento.width=32
+                strumento.heigth=32
+                mostraOgg.remove(strumento)
+                Bag.append(strumento)
+
+def funz_baker():
+
+    global selezionato
+    if selezionato.nome=="so3" or selezionato.nome=="acqua":
+        Bag.remove(selezionato)
+        strumenti.remove(selezionato)
+        selezionato=Null
+        global count_baker
+        if count_baker==1:
+            strAcido=Strumento("acido",acido,0,0,32,32)
+            strAcido.interazione=lambda:aggiungiZaino(strAcido)
+            Bag.append(strAcido)
+
+
+        count_baker=1
+
+def funz_lucchetto(key,block):
+    global selezionato
+    if selezionato!=Null and selezionato.nome==key:
+        Bag.remove(selezionato)
+        strumenti.remove(selezionato)
+        strumenti.remove(block)
+        global mostraScher
+        mostraScher=nulla
+        global mostraOgg
+        mostraOgg=[]
+        global scher
+        scher=Null
+        
+        if(selezionato.nome=="acido"):      
+            global strLucchetto
+            strLucchetto=Strumento("chiave",chiave,300,250,32,32)
+            strLucchetto.interazione=lambda:aggiungiZaino(strLucchetto)
+            aggOggSch([strLucchetto],lambda: assegna(lambda:apriSchermata(schermataArm,246,120)))
+        else:
+            global strLucchetto5C
+            strLucchetto5C= Strumento("",porta,0,0,0,0) 
+            global schermataArmLock5C
+            schermataArmLock5C=schermataArm     
+            
+            assegna(lambda:apriSchermata(schermataArm,246,120))
+        selezionato=Null
+        
 
 def aggOggSch(oggetti,assegna):
     assegna()
-    flag=0
     for oggetto in oggetti:
-        for obj in Bag:
-                if oggetto.nome==obj.nome:
-                    flag=1
-        if flag==0:
+        if oggetto not in Bag:
+            oggetto.interagibile=1
             mostraOgg.append(oggetto)
+            
 
 
 def cambiaStanza(stanza,xSoul,ySoul):
@@ -324,9 +447,9 @@ Button(4,'#007FFF','#0066CC','Torna al gioco',200,40,(420,420),5,aGioco)
 #Istanziamento Oggetti
 
 
-Icona(registro,400,250)
-Icona(appBlocc,600,250)
-Oggetto("5C",armadio,32,64,808,160)
+strLucchetto5C=Strumento("lucchetto",schermataArmLock,246,120,576,407)
+strLucchetto5C.interazione=lambda:funz_lucchetto("chiave",strLucchetto5C)
+Oggetto("5C",armadio,32,64,808,160,lambda:aggOggSch([strLucchetto5C],lambda: assegna(lambda:apriSchermata(schermataArmLock5C,246,120))))
 Oggetto("5C",cestini,64,32,232,64)
 Oggetto("5C",lavagna,64,64,520,-5,lambda: assegna(lambda:apriSchermata(schermataLav,246,120)))
 Oggetto("5C",cattedra,64,96,712,32,lambda: assegna(apriComputer5C))
@@ -336,10 +459,18 @@ Oggetto("corridoio",porta,32,128,928,96,lambda: cambiaStanza(stz5c,232,96))
 Oggetto("corridoio",porta,64,32,160,64,lambda: cambiaStanza(stzChimica,768,556))
 
 strAcqua=Strumento("acqua",acqua,500,200,32,32)
+strAcqua.interazione=lambda:aggiungiZaino(strAcqua)
+
 strSo3=Strumento("so3",so3,600,200,32,32)
+strSo3.interazione=lambda:aggiungiZaino(strSo3)
+
+Baker=Strumento("baker",bakerVuoto,450,250,250,274,funz_baker)
+strLucchetto=Strumento("lucchetto",schermataArmLock,246,120,576,407)
+strLucchetto.interazione=lambda:funz_lucchetto("acido",strLucchetto)
 Oggetto("Chimica",porta,64,32,746,588,lambda: cambiaStanza(stzCorridoio,160,96))
 Oggetto("Chimica",armadio,32,64,320,32,lambda:aggOggSch([strAcqua,strSo3],lambda: assegna(lambda:apriSchermata(schermataArm,246,120))))
-Oggetto("Chimica",bancoChimica,129,97,320,150,lambda:assegna( lambda:apriSchermata(computer,246,120))) #modificare
+Oggetto("Chimica",bancoChimica,129,97,320,150,lambda:aggOggSch([Baker],lambda:assegna( lambda:apriSchermata(schermChimica,246,120)))) #modificare
+Oggetto("Chimica",armadio,32,64,352,32,lambda:aggOggSch([strLucchetto],lambda: assegna(lambda:apriSchermata(schermataArm,246,120))))
 
 #creazione banchi
 xO=135
@@ -426,7 +557,12 @@ pygame.mixer.music.set_volume(0.500)
 global personaggio
 personaggio=Soul()
 
+clock = pygame.time.Clock()
+
 while run:
+    
+    clock.tick(60)
+    MULT=clock.get_fps()/60
     
     if schermata == "Home":
         home()
@@ -478,7 +614,10 @@ while run:
                     personaggio.direzione="SX"
                 elif(evento.key == pygame.K_c):
                     mostraScher=nulla
+                    for obj in mostraOgg:
+                        obj.interagibile=0
                     mostraOgg=[]
+                    scher=Null
                 elif(evento.key == pygame.K_o):
                     apriOptGioco()
                 elif(evento.key == pygame.K_h):
@@ -490,25 +629,25 @@ while run:
                         dirx=personaggio.x-32
                         diry=personaggio.y
                         for oggetto in oggetti:
-                            if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                            if(oggetto.classe==miaStanza.classe and dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
                                 oggetto.interazione()
                     elif(personaggio.direzione=="DX"):
                         dirx=personaggio.x+32
                         diry=personaggio.y
                         for oggetto in oggetti:
-                                if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                                if( oggetto.classe==miaStanza.classe and dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
                                     oggetto.interazione()
                     elif(personaggio.direzione=="SU"):
                         dirx=personaggio.x
                         diry=personaggio.y-32
                         for oggetto in oggetti:
-                            if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                            if(oggetto.classe==miaStanza.classe  and dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
                                 oggetto.interazione()
                     elif(personaggio.direzione=="GIU"):
                         dirx=personaggio.x
                         diry=personaggio.y+32
                         for oggetto in oggetti:
-                            if(dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
+                            if(oggetto.classe==miaStanza.classe  and dirx>oggetto.x-personaggio.width and dirx<oggetto.x2-10 and diry>oggetto.y-personaggio.heigth and diry<oggetto.y2-(personaggio.width/2)):
                                 oggetto.interazione()
 
             if evento.type == pygame.QUIT:
@@ -517,11 +656,20 @@ while run:
             
             if evento.type ==pygame.MOUSEBUTTONDOWN:
                 x,y=evento.pos
-                for str in strumenti:
-                    if x>str.x and x<str.x2 and y>str.y and y<str.y2:
-                        mostraOgg.remove(str)
-                        Bag.append(str)
-                    
+                if scherm!=Null:
+                    if x>scherm.x and x<(scherm.x+scherm.width) and y>scherm.y and y<(scherm.y+scherm.heigth):
+                        scherm.interazione()
+                else:
+                    for strum in strumenti:
+                        if x>strum.x and x<strum.x2 and y>strum.y and y<strum.y2:
+                            if strum.interagibile!=0:
+                                strum.interazione()
+                               
+                          
+                            
+            
+                                
+                        
                     
                     
     elif schermata == "opzioniGioco":

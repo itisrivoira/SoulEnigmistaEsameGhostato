@@ -8,19 +8,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(cors())
 
-//oggetto connessione per creare
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database:"Soul"
-  });
-  
-  //connessione
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
+
   
 
 var dati=[] //array per inserimento dati
@@ -31,7 +19,19 @@ app.get('/',(req,res)=>{
 
 //funziona richiamata con s(nel gioco)
 app.post('/salva',(req,res)=>{
-
+    //oggetto connessione per creare
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database:"Soul"
+    });
+  
+    //connessione
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    });
     dati=req.body
     con.query("SELECT * FROM Salvataggi WHERE id='"+req.body.utente+"'", function (err, result) {
         if (err) throw err;
@@ -74,11 +74,25 @@ app.post('/salva',(req,res)=>{
       
       
     console.log(dati)
+    con.end()
 
     
 })
 
 app.post('/caricaPartita',(req,res)=>{
+    //oggetto connessione per creare
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database:"Soul"
+    });
+  
+    //connessione
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    });
     var dati={
         aga:0,
         acl:0,
@@ -108,10 +122,23 @@ app.post('/caricaPartita',(req,res)=>{
         
         
     })
-    
+    con.end()
 })
 
 app.post('/login',(req,res)=>{
+    //oggetto connessione per creare
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database:"Soul"
+    });
+    
+    //connessione
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    });
     console.log("nick:"+req.body.nick)
     console.log("password:"+req.body.password)
     console.log("SELECT * FROM Utenti WHERE nickname='"+req.body.nick+"' AND password='"+req.body.password+"'")
@@ -123,7 +150,33 @@ app.post('/login',(req,res)=>{
             res.send(JSON.stringify({response:false}))  //altrimenti false
         }
       });
+      con.end()
 })
+
+app.get('/domande',(req,res)=>{
+    //oggetto connessione per creare
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database:"Soul"
+    });
+    
+    //connessione
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    });
+   
+    con.query("SELECT * FROM Domande", function (err, result) {
+        if (err) throw err;
+        if (result.length>0) {
+            res.send(JSON.stringify(result) )
+            console.log(result)
+        }
+    });
+    con.end()
+});
 
 let server = app.listen(3001,()=>{
     console.log("SERVER IN ESECUZIONE SULLA PORTA 3001")

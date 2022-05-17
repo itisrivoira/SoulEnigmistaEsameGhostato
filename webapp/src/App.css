@@ -18,6 +18,16 @@
   background-color: #fff;
 }
 
+#appOpen{
+  display:flex;
+  flex-direction:column;
+}
+.schermata3{
+  width:457px;
+  height:226px;
+  margin-left:9px;
+  margin-top:55px;
+}
 
 #bancone{
   width:300px;
