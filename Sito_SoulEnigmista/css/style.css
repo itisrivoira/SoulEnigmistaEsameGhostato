@@ -89,7 +89,7 @@ body {
     position: absolute;
     top: 0px;
     margin-top: 180px;
-    margin-left: 100px;
+    margin-left: 15%;
 
     color: white;
     font-size: 100px;
@@ -101,7 +101,7 @@ body {
     top: 0px;
     left: 0px;
     margin-top: 415px;
-    margin-left: 100px;
+    margin-left: 15%;
 
     font-style: normal;
     color: white;
@@ -113,7 +113,7 @@ body {
     top: 0px;
     left: 0px;
     margin-top: 460px;
-    margin-left: 100px;
+    margin-left: 15%;
 
     font-weight: bold;
     font-size: 16px;
@@ -139,9 +139,9 @@ body {
 
 .contenitoreInformazioni {
     display: inline-block;
-    margin-left: 110px;
+    margin-left: 0px;
 
-    width: 25%;
+    width: 20%;
     height: 300px;
 }
 
@@ -224,7 +224,7 @@ body {
 
 #titoloGameplay1 {
     position: absolute;
-    margin-left: 55%;
+    margin-left: 47%;
     margin-top: 130px;
 
     font-size: 50px;
@@ -234,7 +234,7 @@ body {
 
 #paragrafoGameplay1 {
     position: absolute;
-    margin-left: 56%;
+    margin-left: 48%;
     margin-top: 200px;
 
     width: 600px;
@@ -245,7 +245,7 @@ body {
 
 #paragrafoGameplay2 {
     position: absolute;
-    margin-left: 9%;
+    margin-left: 15%;
     margin-top: 200px;
 
     width: 600px;
@@ -256,7 +256,7 @@ body {
 
 #titoloGameplay2 {
     position: absolute;
-    margin-left: 9%;
+    margin-left: 15%;
     margin-top: 130px;
 
     font-size: 50px;
@@ -266,7 +266,7 @@ body {
 
 #titoloGameplay3 {
     position: absolute;
-    margin-left: 60%;
+    margin-left: 52%;
     margin-top: 130px;
 
     font-size: 50px;
@@ -276,7 +276,7 @@ body {
 
 #paragrafoGameplay3 {
     position: absolute;
-    margin-left: 56%;
+    margin-left: 48%;
     margin-top: 200px;
 
     width: 600px;
@@ -310,10 +310,10 @@ body {
 
 .contenitorePersonaggi {
     display: inline-block;
-    margin-left: 110px;
+    margin-left: 1%;
 
-    width: 25%;
-    height: 300px;
+    width: 400px;
+    height: 500px;
 }
 
 .immaginePersonaggi {
@@ -322,12 +322,13 @@ body {
 
 .titoloPersonaggi {
     color: white;
-    font-size: 48px;
+    font-size: 40px;
 }
 
 .paragrafoPersonaggi {
     color: white;
     font-size: 20px;
+    width: 400px;
 }
 
 /* -------------- */
@@ -351,7 +352,6 @@ body {
 .immagineIlNostroTeam {
     border-radius: 500px;
     width: 200px;
-    border: 5px solid white;
 }
 
 .contenitoreIlNostroTeam {
@@ -359,7 +359,7 @@ body {
     margin-top: 50px;
     margin-left: 2%;
 
-    width: 22%;
+    width: 15%;
 }
 
 .paragrafoIlNostroTeam {
@@ -385,38 +385,9 @@ body {
     font-size: 48px;
 }
 
-#titoloContattaci {
-    margin-top: 100px;
-
-    color: #FFD200;
-    font-size: 48px;
-    font-weight: bold;
-}
-
-#paragrafoContattaci {
-    margin-top: 30px;
-
-    color: white;
-    font-size: 20px;
-    font-weight: lighter;
-}
-
-#informazioniContattaci {
-    position: absolute;
-    display: inline-block;
-    margin-left: 2%;
-    margin-top: 0px;
-
-    height: 400px;
-    width: 45%;
-}
-
 #moduloContattaci {
-    display: inline-block;
-    margin-left: 50%;
-
     height: 400px;
-    width: 45%;
+    width: 35%;
 }
 
 .testo {

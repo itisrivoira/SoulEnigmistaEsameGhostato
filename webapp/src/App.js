@@ -19,7 +19,7 @@ import so3 from './img/so3.jpg'
 import Bakeracqua from './img/baker1.png'
 import Bakerso3 from './img/baker2.png'
 import Bakeracido from './img/baker3.png'
-import AppBloccata from './AppBloccata'
+
 
 function App() {  //inserisco le variabili
   useEffect(() => {

@@ -66,6 +66,7 @@ registro=pygame.image.load("img/registro.png").convert_alpha()
 appBlocc=pygame.image.load("img/appBlocc.png").convert_alpha()
 banco=pygame.image.load("img/banchi.png").convert_alpha()
 armadio=pygame.image.load("img/armadio.png").convert_alpha()
+armadioCod=pygame.image.load("img/armadioCod.jpeg").convert()
 cestini=pygame.image.load("img/cestino.png").convert_alpha()
 lavagna=pygame.image.load("img/lavagnaO.png").convert_alpha()
 schermataLav=pygame.image.load("img/lavagna.png").convert_alpha()
@@ -400,9 +401,9 @@ def funz_lucchetto(key,block):
             global strLucchetto5C
             strLucchetto5C= Strumento("",porta,0,0,0,0) 
             global schermataArmLock5C
-            schermataArmLock5C=schermataArm     
+            schermataArmLock5C=armadioCod     
             
-            assegna(lambda:apriSchermata(schermataArm,246,120))
+            assegna(lambda:apriSchermata(armadioCod,246,120))
         selezionato=Null
         
 

@@ -141,7 +141,7 @@
         margin-top: 50px;
     
         height: 500px;
-        width: 100%;
+        width: 98%;
     }
     
     #testoIlNostroTeam {
@@ -393,7 +393,7 @@
     }
 
     #sottotitoloHome {
-        margin-left: 100px;
+        margin-left: 150px;
         font-size: 20px;
     }
 
@@ -562,7 +562,7 @@
         margin-left: 30px;
     }
 
-    /* -------------- */          
+    /* -------------- */
 
 }
 
@@ -571,13 +571,13 @@
     /* --- HOME PAGE --- */
 
     #titoloHome {
-        font-size: 60px;
-        height: 80%;
         margin-top: 260px;
+
+        font-size: 60px;
     }
 
     #sottotitoloHome {
-        margin-left: 100px;
+        margin-left: 130px;
         font-size: 20px;
     }
 
@@ -703,7 +703,7 @@
     .contenitorePersonaggi {
         display: block;
         margin-top: 50px;
-        margin-left: 28%;
+        margin-left: 0px;
 
         width: 350px;
         height: 500px;
@@ -746,7 +746,7 @@
     .contenitoreIlNostroTeam {
         display: block;
         margin-top: 50px;
-        margin-left: 39%;
+        margin-left: 0px;
     
         width: 22%;
     }
@@ -768,18 +768,11 @@
         height: 800px;
     }
 
-    #informazioniContattaci {
-        position: absolute;
-        display: block;
-
-        width: 96%;
-    }
-    
     #moduloContattaci {
         position: absolute;
         display: block;
         margin-left: 2%;
-        margin-top: 300px;
+        margin-top: 10px;
 
         width: 96%;
     }
@@ -792,7 +785,7 @@
         position: absolute;
         top: 5250px;
         left: 0px;
-        margin-top: 3200px;
+        margin-top: 2200px;
 
         height: 250px;
         width: 100%;
@@ -825,12 +818,46 @@
 
 @media screen and (max-width: 885px) {
 
+
+    /* --- HOME PAGE --- */
+
+    #titoloHome {
+        margin-top: 260px;
+
+        font-size: 58px;
+
+    }
+
+    #sottotitoloHome {
+        margin-left: 110px;
+        font-size: 20px;
+    }
+
+    /* -------------- */    
+
+
     /* --- INFORMAZIONI --- */
 
     .contenitoreInformazioni {
         margin-top: 50px;
-        margin-left: 300px;
+        margin-left: 0px;
+
+
         display: block;
+        width: 300px;
+    }
+    
+    .iconeInformazioni {
+        width: 120px;
+    }
+    
+    .titoloInformazioni {
+        width: 200px;
+    }
+    
+    .paragrafoInformazioni {
+        width: 300px;
+        font-size: 20px;
     }
 
     /* -------------- */     
@@ -896,7 +923,6 @@
     
         font-size: 38px;
         width: 600px;
-        
     }
 
     #paragrafoGameplay2 {
@@ -925,8 +951,19 @@
     
         width: 600px;
         font-size: 18px;
-        
     } 
+
+    #sfondoGameplay3 {
+        width: 100%;   
+    }
+
+    #sfondoGameplay2 {
+        width: 100%;   
+    }
+
+    #sfondoGameplay1 {
+        width: 100%;   
+    }
 
     /* -------------- */
     
@@ -935,14 +972,17 @@
     #personaggi {
         margin-top: 780px;
         display: block;
+
+        width: 100%;
     }
 
     .contenitorePersonaggi {
+        position: relative;
         display: block;
         margin-top: 50px;
-        margin-left: 28%;
+        margin-left: 0px;
 
-        width: 350px;
+        width: 400px;
         height: 500px;
     }
 
@@ -956,6 +996,8 @@
     }
 
     .paragrafoPersonaggi {
+        margin-left: 0px;
+
         font-size: 20px;
     }
 
@@ -983,13 +1025,13 @@
     .contenitoreIlNostroTeam {
         display: block;
         margin-top: 50px;
-        margin-left: 39%;
+        margin-left: 0px;
     
         width: 22%;
     }
     
     .paragrafoIlNostroTeam {
-        margin-left: 10%;
+        margin-left: 0px;
 
         font-size: 24px;
     }
@@ -1004,19 +1046,12 @@
 
         height: 800px;
     }
-
-    #informazioniContattaci {
-        position: absolute;
-        display: block;
-
-        width: 96%;
-    }
     
     #moduloContattaci {
         position: absolute;
         display: block;
         margin-left: 2%;
-        margin-top: 300px;
+        margin-top: 50px;
 
         width: 96%;
     }
@@ -1029,7 +1064,7 @@
         position: absolute;
         top: 5250px;
         left: 0px;
-        margin-top: 3200px;
+        margin-top: 3100px;
 
         height: 250px;
         width: 100%;
@@ -1066,6 +1101,7 @@
 
     #logoSoulEnigmista {
         width: 200px;
+        margin-left: 0px;
     }
 
     #home, #about_us, #contacts, #login {
@@ -1078,13 +1114,13 @@
 
     #titoloHome {
         font-size: 65px;
-        height: 50%;
         margin-top: 200px;
     }
 
     #sottotitoloHome {
         font-size: 16px;
         margin-top: 430px;
+        margin-left: 90px;
     }
 
     /* -------------- */ 
@@ -1093,22 +1129,11 @@
 
     .contenitoreInformazioni {
         margin-top: 50px;
-        margin-left: 200px;
+        margin-left: 0px;
         display: block;
     }
 
-    .iconeInformazioni {
-        margin-left: 60px;
-    }
-
-    .titoloInformazioni {
-        margin-left: 20px;
-        width: 200px;
-    }
-
     .paragrafoInformazioni {
-
-        width: 250px;
         font-size: 20px;
     }
 
@@ -1206,7 +1231,7 @@
     } 
 
     /* -------------- */ 
-    
+
     /* --- PERSONAGGI --- */
 
     #personaggi {
@@ -1217,7 +1242,7 @@
     .contenitorePersonaggi {
         display: block;
         margin-top: 50px;
-        margin-left: 22%;
+        margin-left: 0px;
 
         width: 350px;
         height: 500px;
@@ -1245,7 +1270,7 @@
         margin-top: 1900px;
     
         height: 500px;
-        width: 100%;
+        width: 99%;
     }
     
     #testoIlNostroTeam {
@@ -1260,13 +1285,13 @@
     .contenitoreIlNostroTeam {
         display: block;
         margin-top: 50px;
-        margin-left: 33%;
+        margin-left: 0px;
     
-        width: 22%;
+        width: 200px;
     }
     
     .paragrafoIlNostroTeam {
-        margin-left: 8%;
+        margin-left: 0px;
 
         width: 200px;
         font-size: 24px;
@@ -1274,7 +1299,33 @@
     
     /* -------------- */ 
 
-        
+    /* --- CONTATTACI --- */
+
+    #contattaci {
+        display: block;
+        margin-top: 2800px;
+
+        height: 800px;
+    }
+
+    #informazioniContattaci {
+        position: absolute;
+        display: block;
+
+        width: 96%;
+    }
+    
+    #moduloContattaci {
+        position: absolute;
+        display: block;
+        margin-left: 2%;
+        margin-top: 50px;
+
+        width: 96%;
+    }
+    
+    /* -------------- */
+    
     /* --- FOOTER --- */
 
     #footer {
@@ -1329,14 +1380,14 @@
     /* --- HOME PAGE --- */
 
     #titoloHome {
-        height: 80%;
         font-size: 58px;
         margin-top: 210px;
     }
 
     #sottotitoloHome {
         font-size: 12px;
-        margin-top: 430px;
+        margin-top: 425px;
+        margin-left: 80px;
     }
 
     /* -------------- */ 
@@ -1345,8 +1396,10 @@
 
     .contenitoreInformazioni {
         margin-top: 100px;
-        margin-left: 150px;
+        margin-left: 0px;
         display: block;
+
+        width: 200px;
     }
 
     .titoloInformazioni {
@@ -1354,7 +1407,9 @@
     }
 
     .iconeInformazioni {
-        margin-left: 35px;
+        margin-left: 0px;
+
+        width: 100px;
     }
 
     .paragrafoInformazioni {
@@ -1466,13 +1521,15 @@
     .contenitorePersonaggi {
         display: block;
         margin-top: 50px;
-        margin-left: 15%;
+        margin-left: 0px;
 
         width: 350px;
         height: 500px;
     }
 
     .immaginePersonaggi {
+        margin-left: 0px;
+
         width: 250px;
     }
 
@@ -1509,9 +1566,9 @@
     .contenitoreIlNostroTeam {
         display: block;
         margin-top: 50px;
-        margin-left: 30%;
+        margin-left: 0px;
     
-        width: 22%;
+        width: 200px;
     }
     
     .paragrafoIlNostroTeam {
@@ -1520,13 +1577,39 @@
     }
     
     /* -------------- */
+
+    /* --- CONTATTACI --- */
+
+    #contattaci {
+        display: block;
+        margin-top: 2800px;
+
+        height: 800px;
+    }
+
+    #informazioniContattaci {
+        position: absolute;
+        display: block;
+
+        width: 96%;
+    }
     
+    #moduloContattaci {
+        position: absolute;
+        display: block;
+        margin-left: 2%;
+        margin-top: 50px;
+
+        width: 96%;
+    }
+    
+    /* -------------- */    
         
     /* --- FOOTER --- */
 
     #footer {
         position: absolute;
-        top: 5250px;
+        top: 5000px;
         left: 0px;
         margin-top: 3200px;
 
