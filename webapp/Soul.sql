@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Mag 12, 2022 alle 00:25
--- Versione del server: 10.4.21-MariaDB
--- Versione PHP: 7.4.24
+-- Creato il: Mag 18, 2022 alle 09:45
+-- Versione del server: 10.4.14-MariaDB
+-- Versione PHP: 7.3.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `Soul`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `Domande`
+--
+
+CREATE TABLE `Domande` (
+  `domanda` varchar(200) NOT NULL,
+  `id` int(11) NOT NULL,
+  `a` varchar(50) NOT NULL,
+  `b` varchar(50) NOT NULL,
+  `c` varchar(50) NOT NULL,
+  `d` varchar(50) NOT NULL,
+  `corretta` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `Domande`
+--
+
+INSERT INTO `Domande` (`domanda`, `id`, `a`, `b`, `c`, `d`, `corretta`) VALUES
+('What is the integral of 9x^2', 1, '18x', '81x^2', '18x^2', '3x^3', 'd');
 
 -- --------------------------------------------------------
 
@@ -40,7 +63,7 @@ CREATE TABLE `Salvataggi` (
 --
 
 INSERT INTO `Salvataggi` (`id`, `Posizione`, `Classe`, `acl`, `aga`) VALUES
-(1, 'armadioChimOpen', 'schermataChim', 1, 0);
+(1, 'banconeChim6', 'schermataChim', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -76,13 +99,18 @@ CREATE TABLE `Zaino1` (
 --
 
 INSERT INTO `Zaino1` (`id`) VALUES
-('acido'),
 ('acqua'),
 ('so3');
 
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `Domande`
+--
+ALTER TABLE `Domande`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `Salvataggi`
@@ -106,6 +134,12 @@ ALTER TABLE `Zaino1`
 --
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+
+--
+-- AUTO_INCREMENT per la tabella `Domande`
+--
+ALTER TABLE `Domande`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `Utenti`
